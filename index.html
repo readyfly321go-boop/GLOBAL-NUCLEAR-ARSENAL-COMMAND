@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+const LANG = (() => { try { const q = new URLSearchParams(location.search).get('lang'); if (q === 'en' || q === 'zh') { localStorage.setItem('lang', q); return q; } const m = localStorage.getItem('lang'); if (m === 'en' || m === 'zh') return m; } catch (e) {} return /^zh/i.test(navigator.language || 'zh') ? 'zh' : 'en'; })();
+</script>
+  <title>全球核武庫資料庫｜九個擁核國家庫存、載具與當量對比（SIPRI 2026）</title>
+  <meta name="description" content="依 SIPRI Yearbook 2026（2026 年 1 月估計）整理九個擁核國家的核彈頭庫存、核三位一體與載具，並提供當量與效應半徑對比模擬器。">
+  <meta property="og:type" content="website"><meta property="og:title" content="全球核武庫資料庫（SIPRI 2026）">
+  <meta property="og:description" content="九個擁核國家庫存、載具圖鑑與當量對比模擬器；數據為公開估計值。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%98%A2%EF%B8%8F%3C/text%3E%3C/svg%3E">
+  <style id="tw-static"> @layer properties;@layer theme,base,components,utilities;@layer theme{:root,:host{--font-sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";--font-mono: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;--color-orange-400: oklch(75% 0.183 55.934);--color-orange-500: oklch(70.5% 0.213 47.604);--color-amber-50: oklch(98.7% 0.022 95.277);--color-amber-300: oklch(87.9% 0.169 91.605);--color-amber-400: oklch(82.8% 0.189 84.429);--color-amber-500: oklch(76.9% 0.188 70.08);--color-amber-600: oklch(66.6% 0.179 58.318);--color-amber-800: oklch(47.3% 0.137 46.201);--color-teal-50: oklch(98.4% 0.014 180.72);--color-teal-500: oklch(70.4% 0.14 182.503);--color-teal-700: oklch(51.1% 0.096 186.391);--color-sky-50: oklch(97.7% 0.013 236.62);--color-slate-100: oklch(96.8% 0.007 247.896);--color-slate-300: oklch(86.9% 0.022 252.894);--color-slate-500: oklch(55.4% 0.046 257.417);--color-slate-600: oklch(44.6% 0.043 257.281);--color-slate-800: oklch(27.9% 0.041 260.031);--color-slate-900: oklch(20.8% 0.042 265.755);--color-slate-950: oklch(12.9% 0.042 264.695);--color-gray-200: oklch(92.8% 0.006 264.531);--color-black: #000;--color-white: #fff;--spacing: 0.25rem;--container-2xl: 42rem;--container-7xl: 80rem;--text-xs: 0.75rem;--text-xs--line-height: calc(1 / 0.75);--text-sm: 0.875rem;--text-sm--line-height: calc(1.25 / 0.875);--text-base: 1rem;--text-base--line-height: calc(1.5 / 1);--text-lg: 1.125rem;--text-lg--line-height: calc(1.75 / 1.125);--text-xl: 1.25rem;--text-xl--line-height: calc(1.75 / 1.25);--text-2xl: 1.5rem;--text-2xl--line-height: calc(2 / 1.5);--font-weight-semibold: 600;--font-weight-bold: 700;--font-weight-extrabold: 800;--font-weight-black: 900;--tracking-wider: 0.05em;--tracking-widest: 0.1em;--leading-snug: 1.375;--leading-relaxed: 1.625;--radius-xs: 0.125rem;--radius-sm: 0.25rem;--radius-md: 0.375rem;--radius-lg: 0.5rem;--radius-xl: 0.75rem;--radius-2xl: 1rem;--blur-md: 12px;--default-transition-duration: 150ms;--default-transition-timing-function: cubic-bezier(0.4,0,0.2,1);--default-font-family: var(--font-sans);--default-mono-font-family: var(--font-mono);}}@layer base{*,::after,::before,::backdrop,::file-selector-button{box-sizing: border-box;margin: 0;padding: 0;border: 0 solid;}html,:host{line-height: 1.5;-webkit-text-size-adjust: 100%;tab-size: 4;font-family: var(--default-font-family,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji");font-feature-settings: var(--default-font-feature-settings,normal);font-variation-settings: var(--default-font-variation-settings,normal);-webkit-tap-highlight-color: transparent;}hr{height: 0;color: inherit;border-top-width: 1px;}abbr:where([title]){-webkit-text-decoration: underline dotted;text-decoration: underline dotted;}h1,h2,h3,h4,h5,h6{font-size: inherit;font-weight: inherit;}a{color: inherit;-webkit-text-decoration: inherit;text-decoration: inherit;}b,strong{font-weight: bolder;}code,kbd,samp,pre{font-family: var(--default-mono-font-family,ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace);font-feature-settings: var(--default-mono-font-feature-settings,normal);font-variation-settings: var(--default-mono-font-variation-settings,normal);font-size: 1em;}small{font-size: 80%;}sub,sup{font-size: 75%;line-height: 0;position: relative;vertical-align: baseline;}sub{bottom: -0.25em;}sup{top: -0.5em;}table{text-indent: 0;border-color: inherit;border-collapse: collapse;}:-moz-focusring:where(:not(iframe)){outline: auto;}progress{vertical-align: baseline;}summary{display: list-item;}ol,ul,menu{list-style: none;}img,svg,video,canvas,audio,iframe,embed,object{display: block;vertical-align: middle;}img,video{max-width: 100%;height: auto;}button,input,select,optgroup,textarea,::file-selector-button{font: inherit;font-feature-settings: inherit;font-variation-settings: inherit;letter-spacing: inherit;color: inherit;border-radius: 0;background-color: transparent;opacity: 1;}:where(select:is([multiple],[size])) optgroup{font-weight: bolder;}:where(select:is([multiple],[size])) optgroup option{padding-inline-start: 20px;}::file-selector-button{margin-inline-end: 4px;}::placeholder{opacity: 1;}@supports (not (-webkit-appearance: -apple-pay-button)) or (contain-intrinsic-size: 1px){::placeholder{color: currentcolor;@supports (color: color-mix(in lab,red,red)){color: color-mix(in oklab,currentcolor 50%,transparent);}}}textarea{resize: vertical;}::-webkit-search-decoration{-webkit-appearance: none;}::-webkit-date-and-time-value{min-height: 1lh;text-align: inherit;}::-webkit-datetime-edit{display: inline-flex;}::-webkit-datetime-edit-fields-wrapper{padding: 0;}::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field{padding-block: 0;}::-webkit-calendar-picker-indicator{line-height: 1;}:-moz-ui-invalid{box-shadow: none;}button,input:where([type="button"],[type="reset"],[type="submit"]),::file-selector-button{appearance: button;}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height: auto;}[hidden]:where(:not([hidden="until-found"])){display: none !important;}}@layer utilities{.collapse{visibility: collapse;}.absolute{position: absolute;}.fixed{position: fixed;}.relative{position: relative;}.sticky{position: sticky;}.top-0{top: 0px;}.top-3{top: calc(var(--spacing) * 3);}.right-0{right: 0px;}.right-3{right: calc(var(--spacing) * 3);}.bottom-0{bottom: 0px;}.bottom-3{bottom: calc(var(--spacing) * 3);}.left-1\/2{left: calc(1 / 2 * 100%);}.left-3{left: calc(var(--spacing) * 3);}.isolate{isolation: isolate;}.z-10{z-index: 10;}.z-50{z-index: 50;}.col-span-full{grid-column: 1 / -1;}.container{width: 100%;@media (width>= 40rem){max-width: 40rem;}@media (width>= 48rem){max-width: 48rem;}@media (width>= 64rem){max-width: 64rem;}@media (width>= 80rem){max-width: 80rem;}@media (width>= 96rem){max-width: 96rem;}}.mx-auto{margin-inline: auto;}.my-4{margin-block: calc(var(--spacing) * 4);}.mt-0\.5{margin-top: calc(var(--spacing) * 0.5);}.mt-1{margin-top: var(--spacing);}.mt-1\.5{margin-top: calc(var(--spacing) * 1.5);}.mt-2{margin-top: calc(var(--spacing) * 2);}.mt-2\.5{margin-top: calc(var(--spacing) * 2.5);}.mt-3{margin-top: calc(var(--spacing) * 3);}.mt-3\.5{margin-top: calc(var(--spacing) * 3.5);}.mt-4{margin-top: calc(var(--spacing) * 4);}.mt-5{margin-top: calc(var(--spacing) * 5);}.mr-2{margin-right: calc(var(--spacing) * 2);}.-mb-3{margin-bottom: calc(var(--spacing) * -3);}.mb-1{margin-bottom: var(--spacing);}.mb-1\.5{margin-bottom: calc(var(--spacing) * 1.5);}.mb-2{margin-bottom: calc(var(--spacing) * 2);}.mb-3{margin-bottom: calc(var(--spacing) * 3);}.mb-4{margin-bottom: calc(var(--spacing) * 4);}.mb-5{margin-bottom: calc(var(--spacing) * 5);}.block{display: block;}.flex{display: flex;}.grid{display: grid;}.hidden{display: none;}.inline-block{display: inline-block;}.inline-flex{display: inline-flex;}.table{display: table;}.h-1{height: var(--spacing);}.h-1\.5{height: calc(var(--spacing) * 1.5);}.h-2{height: calc(var(--spacing) * 2);}.h-2\.5{height: calc(var(--spacing) * 2.5);}.h-5{height: calc(var(--spacing) * 5);}.h-6{height: calc(var(--spacing) * 6);}.h-9{height: calc(var(--spacing) * 9);}.h-11{height: calc(var(--spacing) * 11);}.h-20{height: calc(var(--spacing) * 20);}.h-\[340px\]{height: 340px;}.h-auto{height: auto;}.h-full{height: 100%;}.min-h-\[380px\]{min-height: 380px;}.w-2{width: calc(var(--spacing) * 2);}.w-2\.5{width: calc(var(--spacing) * 2.5);}.w-4{width: calc(var(--spacing) * 4);}.w-5{width: calc(var(--spacing) * 5);}.w-7{width: calc(var(--spacing) * 7);}.w-9{width: calc(var(--spacing) * 9);}.w-11{width: calc(var(--spacing) * 11);}.w-16{width: calc(var(--spacing) * 16);}.w-20{width: calc(var(--spacing) * 20);}.w-24{width: calc(var(--spacing) * 24);}.w-\[1px\]{width: 1px;}.w-\[27\%\]{width: 27%;}.w-\[94\%\]{width: 94%;}.w-full{width: 100%;}.max-w-2xl{max-width: var(--container-2xl);}.max-w-7xl{max-width: var(--container-7xl);}.max-w-\[420px\]{max-width: 420px;}.min-w-0{min-width: 0px;}.flex-1{flex: 1;}.shrink{flex-shrink: 1;}.shrink-0{flex-shrink: 0;}.grow{flex-grow: 1;}.-translate-x-1\/2{--tw-translate-x: calc(calc(1 / 2 * 100%) * -1);translate: var(--tw-translate-x) var(--tw-translate-y);}.transform{transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);}.cursor-grab{cursor: grab;}.cursor-pointer{cursor: pointer;}.grid-cols-1{grid-template-columns: repeat(1,minmax(0,1fr));}.grid-cols-3{grid-template-columns: repeat(3,minmax(0,1fr));}.flex-col{flex-direction: column;}.flex-wrap{flex-wrap: wrap;}.content-start{align-content: flex-start;}.items-center{align-items: center;}.items-start{align-items: flex-start;}.justify-between{justify-content: space-between;}.justify-center{justify-content: center;}.justify-end{justify-content: flex-end;}.gap-1{gap: var(--spacing);}.gap-1\.5{gap: calc(var(--spacing) * 1.5);}.gap-2{gap: calc(var(--spacing) * 2);}.gap-2\.5{gap: calc(var(--spacing) * 2.5);}.gap-3{gap: calc(var(--spacing) * 3);}.gap-3\.5{gap: calc(var(--spacing) * 3.5);}.gap-4{gap: calc(var(--spacing) * 4);}.gap-6{gap: calc(var(--spacing) * 6);}:where(.space-y-0\.5>:not(:last-child)){--tw-space-y-reverse: 0;margin-block-start: calc(calc(var(--spacing) * 0.5) * var(--tw-space-y-reverse));margin-block-end: calc(calc(var(--spacing) * 0.5) * calc(1 - var(--tw-space-y-reverse)));}:where(.space-y-1\.5>:not(:last-child)){--tw-space-y-reverse: 0;margin-block-start: calc(calc(var(--spacing) * 1.5) * var(--tw-space-y-reverse));margin-block-end: calc(calc(var(--spacing) * 1.5) * calc(1 - var(--tw-space-y-reverse)));}:where(.space-y-2>:not(:last-child)){--tw-space-y-reverse: 0;margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));}:where(.space-y-4>:not(:last-child)){--tw-space-y-reverse: 0;margin-block-start: calc(calc(var(--spacing) * 4) * var(--tw-space-y-reverse));margin-block-end: calc(calc(var(--spacing) * 4) * calc(1 - var(--tw-space-y-reverse)));}:where(.space-y-5>:not(:last-child)){--tw-space-y-reverse: 0;margin-block-start: calc(calc(var(--spacing) * 5) * var(--tw-space-y-reverse));margin-block-end: calc(calc(var(--spacing) * 5) * calc(1 - var(--tw-space-y-reverse)));}:where(.space-y-6>:not(:last-child)){--tw-space-y-reverse: 0;margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));}.gap-x-5{column-gap: calc(var(--spacing) * 5);}.gap-y-1{row-gap: var(--spacing);}.truncate{overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}.overflow-hidden{overflow: hidden;}.overflow-x-auto{overflow-x: auto;}.rounded{border-radius: 0.25rem;}.rounded-2xl{border-radius: var(--radius-2xl);}.rounded-full{border-radius: calc(infinity * 1px);}.rounded-lg{border-radius: var(--radius-lg);}.rounded-md{border-radius: var(--radius-md);}.rounded-sm{border-radius: var(--radius-sm);}.rounded-xl{border-radius: var(--radius-xl);}.rounded-xs{border-radius: var(--radius-xs);}.border{border-style: var(--tw-border-style);border-width: 1px;}.border-t{border-top-style: var(--tw-border-style);border-top-width: 1px;}.border-b{border-bottom-style: var(--tw-border-style);border-bottom-width: 1px;}.border-l-2{border-left-style: var(--tw-border-style);border-left-width: 2px;}.border-dashed{--tw-border-style: dashed;border-style: dashed;}.border-\[\#0A84A6\]{border-color: #0A84A6;}.border-\[\#0A84A6\]\/30{border-color: color-mix(in oklab,#0A84A6 30%,transparent);}.border-\[\#0A84A6\]\/35{border-color: color-mix(in oklab,#0A84A6 35%,transparent);}.border-\[\#0A84A6\]\/40{border-color: color-mix(in oklab,#0A84A6 40%,transparent);}.border-\[\#0A84A6\]\/60{border-color: color-mix(in oklab,#0A84A6 60%,transparent);}.border-\[\#475569\]{border-color: #475569;}.border-\[\#B7C8DA\]{border-color: #B7C8DA;}.border-\[\#B45309\]{border-color: #B45309;}.border-\[\#B45309\]\/30{border-color: color-mix(in oklab,#B45309 30%,transparent);}.border-\[\#B45309\]\/50{border-color: color-mix(in oklab,#B45309 50%,transparent);}.border-\[\#C6D5E5\]{border-color: #C6D5E5;}.border-\[\#DBE5F0\]{border-color: #DBE5F0;}.border-amber-300{border-color: var(--color-amber-300);}.border-amber-400\/40{border-color: color-mix(in srgb,oklch(82.8% 0.189 84.429) 40%,transparent);@supports (color: color-mix(in lab,red,red)){border-color: color-mix(in oklab,var(--color-amber-400) 40%,transparent);}}.border-white\/15{border-color: color-mix(in srgb,#fff 15%,transparent);@supports (color: color-mix(in lab,red,red)){border-color: color-mix(in oklab,var(--color-white) 15%,transparent);}}.border-white\/20{border-color: color-mix(in srgb,#fff 20%,transparent);@supports (color: color-mix(in lab,red,red)){border-color: color-mix(in oklab,var(--color-white) 20%,transparent);}}.bg-\[\#0A84A6\]{background-color: #0A84A6;}.bg-\[\#0A84A6\]\/10{background-color: color-mix(in oklab,#0A84A6 10%,transparent);}.bg-\[\#0A84A6\]\/15{background-color: color-mix(in oklab,#0A84A6 15%,transparent);}.bg-\[\#0A84A6\]\/20{background-color: color-mix(in oklab,#0A84A6 20%,transparent);}.bg-\[\#B7C8DA\]{background-color: #B7C8DA;}.bg-\[\#C6D5E5\]{background-color: #C6D5E5;}.bg-\[\#E6EEF6\]{background-color: #E6EEF6;}.bg-\[\#E04400\]{background-color: #E04400;}.bg-\[\#F2F6FB\]{background-color: #F2F6FB;}.bg-\[\#F2F6FB\]\/60{background-color: color-mix(in oklab,#F2F6FB 60%,transparent);}.bg-\[\#F2F6FB\]\/80{background-color: color-mix(in oklab,#F2F6FB 80%,transparent);}.bg-\[\#F2F6FB\]\/90{background-color: color-mix(in oklab,#F2F6FB 90%,transparent);}.bg-\[\#FF4D00\]{background-color: #FF4D00;}.bg-\[\#FFFFFF\]{background-color: #FFFFFF;}.bg-amber-400{background-color: var(--color-amber-400);}.bg-amber-400\/10{background-color: color-mix(in srgb,oklch(82.8% 0.189 84.429) 10%,transparent);@supports (color: color-mix(in lab,red,red)){background-color: color-mix(in oklab,var(--color-amber-400) 10%,transparent);}}.bg-amber-400\/20{background-color: color-mix(in srgb,oklch(82.8% 0.189 84.429) 20%,transparent);@supports (color: color-mix(in lab,red,red)){background-color: color-mix(in oklab,var(--color-amber-400) 20%,transparent);}}.bg-black\/70{background-color: color-mix(in srgb,#000 70%,transparent);@supports (color: color-mix(in lab,red,red)){background-color: color-mix(in oklab,var(--color-black) 70%,transparent);}}.bg-teal-50{background-color: var(--color-teal-50);}.bg-white\/10{background-color: color-mix(in srgb,#fff 10%,transparent);@supports (color: color-mix(in lab,red,red)){background-color: color-mix(in oklab,var(--color-white) 10%,transparent);}}.bg-white\/95{background-color: color-mix(in srgb,#fff 95%,transparent);@supports (color: color-mix(in lab,red,red)){background-color: color-mix(in oklab,var(--color-white) 95%,transparent);}}.bg-gradient-to-r{--tw-gradient-position: to right in oklab;background-image: linear-gradient(var(--tw-gradient-stops));}.from-\[\#F59E0B\]{--tw-gradient-from: #F59E0B;--tw-gradient-stops: var(--tw-gradient-via-stops,var(--tw-gradient-position),var(--tw-gradient-from) var(--tw-gradient-from-position),var(--tw-gradient-to) var(--tw-gradient-to-position));}.from-amber-50{--tw-gradient-from: var(--color-amber-50);--tw-gradient-stops: var(--tw-gradient-via-stops,var(--tw-gradient-position),var(--tw-gradient-from) var(--tw-gradient-from-position),var(--tw-gradient-to) var(--tw-gradient-to-position));}.from-amber-400{--tw-gradient-from: var(--color-amber-400);--tw-gradient-stops: var(--tw-gradient-via-stops,var(--tw-gradient-position),var(--tw-gradient-from) var(--tw-gradient-from-position),var(--tw-gradient-to) var(--tw-gradient-to-position));}.via-white{--tw-gradient-via: var(--color-white);--tw-gradient-via-stops: var(--tw-gradient-position),var(--tw-gradient-from) var(--tw-gradient-from-position),var(--tw-gradient-via) var(--tw-gradient-via-position),var(--tw-gradient-to) var(--tw-gradient-to-position);--tw-gradient-stops: var(--tw-gradient-via-stops);}.to-\[\#E04400\]{--tw-gradient-to: #E04400;--tw-gradient-stops: var(--tw-gradient-via-stops,var(--tw-gradient-position),var(--tw-gradient-from) var(--tw-gradient-from-position),var(--tw-gradient-to) var(--tw-gradient-to-position));}.to-orange-500{--tw-gradient-to: var(--color-orange-500);--tw-gradient-stops: var(--tw-gradient-via-stops,var(--tw-gradient-position),var(--tw-gradient-from) var(--tw-gradient-from-position),var(--tw-gradient-to) var(--tw-gradient-to-position));}.to-sky-50{--tw-gradient-to: var(--color-sky-50);--tw-gradient-stops: var(--tw-gradient-via-stops,var(--tw-gradient-position),var(--tw-gradient-from) var(--tw-gradient-from-position),var(--tw-gradient-to) var(--tw-gradient-to-position));}.object-cover{object-fit: cover;}.p-1{padding: var(--spacing);}.p-2\.5{padding: calc(var(--spacing) * 2.5);}.p-3{padding: calc(var(--spacing) * 3);}.p-4{padding: calc(var(--spacing) * 4);}.p-5{padding: calc(var(--spacing) * 5);}.px-0\.5{padding-inline: calc(var(--spacing) * 0.5);}.px-1{padding-inline: var(--spacing);}.px-1\.5{padding-inline: calc(var(--spacing) * 1.5);}.px-2{padding-inline: calc(var(--spacing) * 2);}.px-2\.5{padding-inline: calc(var(--spacing) * 2.5);}.px-3{padding-inline: calc(var(--spacing) * 3);}.px-4{padding-inline: calc(var(--spacing) * 4);}.px-5{padding-inline: calc(var(--spacing) * 5);}.py-0\.5{padding-block: calc(var(--spacing) * 0.5);}.py-1{padding-block: var(--spacing);}.py-1\.5{padding-block: calc(var(--spacing) * 1.5);}.py-2{padding-block: calc(var(--spacing) * 2);}.py-2\.5{padding-block: calc(var(--spacing) * 2.5);}.py-3{padding-block: calc(var(--spacing) * 3);}.py-12{padding-block: calc(var(--spacing) * 12);}.pt-3{padding-top: calc(var(--spacing) * 3);}.pt-6{padding-top: calc(var(--spacing) * 6);}.pt-8{padding-top: calc(var(--spacing) * 8);}.pr-3{padding-right: calc(var(--spacing) * 3);}.pb-1\.5{padding-bottom: calc(var(--spacing) * 1.5);}.pb-4{padding-bottom: calc(var(--spacing) * 4);}.pb-16{padding-bottom: calc(var(--spacing) * 16);}.text-center{text-align: center;}.text-left{text-align: left;}.text-right{text-align: right;}.font-sans{font-family: var(--font-sans);}.text-2xl{font-size: var(--text-2xl);line-height: var(--tw-leading,var(--text-2xl--line-height));}.text-base{font-size: var(--text-base);line-height: var(--tw-leading,var(--text-base--line-height));}.text-lg{font-size: var(--text-lg);line-height: var(--tw-leading,var(--text-lg--line-height));}.text-sm{font-size: var(--text-sm);line-height: var(--tw-leading,var(--text-sm--line-height));}.text-xl{font-size: var(--text-xl);line-height: var(--tw-leading,var(--text-xl--line-height));}.text-xs{font-size: var(--text-xs);line-height: var(--tw-leading,var(--text-xs--line-height));}.text-\[10px\]{font-size: 10px;}.text-\[11px\]{font-size: 11px;}.leading-relaxed{--tw-leading: var(--leading-relaxed);line-height: var(--leading-relaxed);}.leading-snug{--tw-leading: var(--leading-snug);line-height: var(--leading-snug);}.font-black{--tw-font-weight: var(--font-weight-black);font-weight: var(--font-weight-black);}.font-bold{--tw-font-weight: var(--font-weight-bold);font-weight: var(--font-weight-bold);}.font-extrabold{--tw-font-weight: var(--font-weight-extrabold);font-weight: var(--font-weight-extrabold);}.font-semibold{--tw-font-weight: var(--font-weight-semibold);font-weight: var(--font-weight-semibold);}.tracking-wider{--tw-tracking: var(--tracking-wider);letter-spacing: var(--tracking-wider);}.tracking-widest{--tw-tracking: var(--tracking-widest);letter-spacing: var(--tracking-widest);}.text-\[\#0A84A6\]{color: #0A84A6;}.text-\[\#2A394B\]{color: #2A394B;}.text-\[\#4F647A\]{color: #4F647A;}.text-\[\#5B7086\]{color: #5B7086;}.text-\[\#050A10\]{color: #050A10;}.text-\[\#18232F\]{color: #18232F;}.text-\[\#B45309\]{color: #B45309;}.text-\[\#E04400\]{color: #E04400;}.text-amber-300{color: var(--color-amber-300);}.text-amber-800{color: var(--color-amber-800);}.text-slate-300{color: var(--color-slate-300);}.text-slate-500{color: var(--color-slate-500);}.text-slate-600{color: var(--color-slate-600);}.text-slate-800{color: var(--color-slate-800);}.text-slate-900{color: var(--color-slate-900);}.text-slate-950{color: var(--color-slate-950);}.text-teal-700{color: var(--color-teal-700);}.text-white{color: var(--color-white);}.uppercase{text-transform: uppercase;}.opacity-55{opacity: 55%;}.shadow-2xl{--tw-shadow: 0 25px 50px -12px var(--tw-shadow-color,rgb(0 0 0 / 0.25));box-shadow: var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);}.shadow-\[0_0_8px_\#0A84A6\]{--tw-shadow: 0 0 8px var(--tw-shadow-color,#0A84A6);box-shadow: var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);}.shadow-lg{--tw-shadow: 0 10px 15px -3px var(--tw-shadow-color,rgb(0 0 0 / 0.1)),0 4px 6px -4px var(--tw-shadow-color,rgb(0 0 0 / 0.1));box-shadow: var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);}.shadow-md{--tw-shadow: 0 4px 6px -1px var(--tw-shadow-color,rgb(0 0 0 / 0.1)),0 2px 4px -2px var(--tw-shadow-color,rgb(0 0 0 / 0.1));box-shadow: var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);}.ring{--tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow: var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);}.ring-1{--tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color,currentcolor);box-shadow: var(--tw-inset-shadow),var(--tw-inset-ring-shadow),var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow);}.shadow-amber-500\/25{--tw-shadow-color: color-mix(in srgb,oklch(76.9% 0.188 70.08) 25%,transparent);@supports (color: color-mix(in lab,red,red)){--tw-shadow-color: color-mix(in oklab,color-mix(in oklab,var(--color-amber-500) 25%,transparent) var(--tw-shadow-alpha),transparent);}}.ring-amber-400\/40{--tw-ring-color: color-mix(in srgb,oklch(82.8% 0.189 84.429) 40%,transparent);@supports (color: color-mix(in lab,red,red)){--tw-ring-color: color-mix(in oklab,var(--color-amber-400) 40%,transparent);}}.ring-teal-500\/40{--tw-ring-color: color-mix(in srgb,oklch(70.4% 0.14 182.503) 40%,transparent);@supports (color: color-mix(in lab,red,red)){--tw-ring-color: color-mix(in oklab,var(--color-teal-500) 40%,transparent);}}.filter{filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);}.backdrop-blur{--tw-backdrop-blur: blur(8px);-webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);}.backdrop-blur-md{--tw-backdrop-blur: blur(var(--blur-md));-webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);}.transition{transition-property: color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to,opacity,box-shadow,transform,translate,scale,rotate,filter,-webkit-backdrop-filter,backdrop-filter,display,content-visibility,overlay,pointer-events;transition-timing-function: var(--tw-ease,var(--default-transition-timing-function));transition-duration: var(--tw-duration,var(--default-transition-duration));}.transition-all{transition-property: all;transition-timing-function: var(--tw-ease,var(--default-transition-timing-function));transition-duration: var(--tw-duration,var(--default-transition-duration));}.transition-colors{transition-property: color,background-color,border-color,outline-color,text-decoration-color,fill,stroke,--tw-gradient-from,--tw-gradient-via,--tw-gradient-to;transition-timing-function: var(--tw-ease,var(--default-transition-timing-function));transition-duration: var(--tw-duration,var(--default-transition-duration));}@media (hover: hover){.group-hover\:text-\[\#0A84A6\]:is(:where(.group):hover *){color: #0A84A6;}.group-hover\:text-amber-600:is(:where(.group):hover *){color: var(--color-amber-600);}.hover\:border-\[\#0A84A6\]:hover{border-color: #0A84A6;}.hover\:border-\[\#0A84A6\]\/60:hover{border-color: color-mix(in oklab,#0A84A6 60%,transparent);}.hover\:bg-amber-300:hover{background-color: var(--color-amber-300);}.hover\:bg-amber-400\/20:hover{background-color: color-mix(in srgb,oklch(82.8% 0.189 84.429) 20%,transparent);}@supports (color: color-mix(in lab,red,red)){.hover\:bg-amber-400\/20:hover{background-color: color-mix(in oklab,var(--color-amber-400) 20%,transparent);}}.hover\:bg-slate-100:hover{background-color: var(--color-slate-100);}.hover\:from-amber-300:hover{--tw-gradient-from: var(--color-amber-300);--tw-gradient-stops: var(--tw-gradient-via-stops,var(--tw-gradient-position),var(--tw-gradient-from) var(--tw-gradient-from-position),var(--tw-gradient-to) var(--tw-gradient-to-position));}.hover\:to-orange-400:hover{--tw-gradient-to: var(--color-orange-400);--tw-gradient-stops: var(--tw-gradient-via-stops,var(--tw-gradient-position),var(--tw-gradient-from) var(--tw-gradient-from-position),var(--tw-gradient-to) var(--tw-gradient-to-position));}.hover\:text-slate-900:hover{color: var(--color-slate-900);}.hover\:underline:hover{text-decoration-line: underline;}}.focus\:outline:focus{outline-style: var(--tw-outline-style);outline-width: 1px;}.focus\:outline-1:focus{outline-style: var(--tw-outline-style);outline-width: 1px;}.focus\:outline-\[\#0A84A6\]\/60:focus{outline-color: color-mix(in oklab,#0A84A6 60%,transparent);}.focus\:outline-none:focus{--tw-outline-style: none;outline-style: none;}.active\:scale-95:active{--tw-scale-x: 95%;--tw-scale-y: 95%;--tw-scale-z: 95%;scale: var(--tw-scale-x) var(--tw-scale-y);}@media (width>= 40rem){.sm\:inline-block{display: inline-block;}.sm\:h-\[420px\]{height: 420px;}.sm\:grid-cols-5{grid-template-columns: repeat(5,minmax(0,1fr));}}@media (width>= 48rem){.md\:inline-block{display: inline-block;}.md\:grid-cols-2{grid-template-columns: repeat(2,minmax(0,1fr));}.md\:gap-6{gap: calc(var(--spacing) * 6);}.md\:p-6{padding: calc(var(--spacing) * 6);}.md\:text-lg{font-size: var(--text-lg);line-height: var(--tw-leading,var(--text-lg--line-height));}}@media (width>= 64rem){.lg\:col-span-4{grid-column: span 4 / span 4;}.lg\:col-span-5{grid-column: span 5 / span 5;}.lg\:col-span-7{grid-column: span 7 / span 7;}.lg\:col-span-8{grid-column: span 8 / span 8;}.lg\:grid-cols-9{grid-template-columns: repeat(9,minmax(0,1fr));}.lg\:grid-cols-12{grid-template-columns: repeat(12,minmax(0,1fr));}}}@layer base{*,::after,::before,::backdrop,::file-selector-button{border-color: var(--color-gray-200,currentColor);}}@property --tw-translate-x{syntax: "*";inherits: false;initial-value: 0;}@property --tw-translate-y{syntax: "*";inherits: false;initial-value: 0;}@property --tw-translate-z{syntax: "*";inherits: false;initial-value: 0;}@property --tw-rotate-x{syntax: "*";inherits: false;}@property --tw-rotate-y{syntax: "*";inherits: false;}@property --tw-rotate-z{syntax: "*";inherits: false;}@property --tw-skew-x{syntax: "*";inherits: false;}@property --tw-skew-y{syntax: "*";inherits: false;}@property --tw-space-y-reverse{syntax: "*";inherits: false;initial-value: 0;}@property --tw-border-style{syntax: "*";inherits: false;initial-value: solid;}@property --tw-gradient-position{syntax: "*";inherits: false;}@property --tw-gradient-from{syntax: "<color>";inherits: false;initial-value: #0000;}@property --tw-gradient-via{syntax: "<color>";inherits: false;initial-value: #0000;}@property --tw-gradient-to{syntax: "<color>";inherits: false;initial-value: #0000;}@property --tw-gradient-stops{syntax: "*";inherits: false;}@property --tw-gradient-via-stops{syntax: "*";inherits: false;}@property --tw-gradient-from-position{syntax: "<length-percentage>";inherits: false;initial-value: 0%;}@property --tw-gradient-via-position{syntax: "<length-percentage>";inherits: false;initial-value: 50%;}@property --tw-gradient-to-position{syntax: "<length-percentage>";inherits: false;initial-value: 100%;}@property --tw-leading{syntax: "*";inherits: false;}@property --tw-font-weight{syntax: "*";inherits: false;}@property --tw-tracking{syntax: "*";inherits: false;}@property --tw-shadow{syntax: "*";inherits: false;initial-value: 0 0 #0000;}@property --tw-shadow-color{syntax: "*";inherits: false;}@property --tw-shadow-alpha{syntax: "<percentage>";inherits: false;initial-value: 100%;}@property --tw-inset-shadow{syntax: "*";inherits: false;initial-value: 0 0 #0000;}@property --tw-inset-shadow-color{syntax: "*";inherits: false;}@property --tw-inset-shadow-alpha{syntax: "<percentage>";inherits: false;initial-value: 100%;}@property --tw-ring-color{syntax: "*";inherits: false;}@property --tw-ring-shadow{syntax: "*";inherits: false;initial-value: 0 0 #0000;}@property --tw-inset-ring-color{syntax: "*";inherits: false;}@property --tw-inset-ring-shadow{syntax: "*";inherits: false;initial-value: 0 0 #0000;}@property --tw-ring-inset{syntax: "*";inherits: false;}@property --tw-ring-offset-width{syntax: "<length>";inherits: false;initial-value: 0px;}@property --tw-ring-offset-color{syntax: "*";inherits: false;initial-value: #fff;}@property --tw-ring-offset-shadow{syntax: "*";inherits: false;initial-value: 0 0 #0000;}@property --tw-blur{syntax: "*";inherits: false;}@property --tw-brightness{syntax: "*";inherits: false;}@property --tw-contrast{syntax: "*";inherits: false;}@property --tw-grayscale{syntax: "*";inherits: false;}@property --tw-hue-rotate{syntax: "*";inherits: false;}@property --tw-invert{syntax: "*";inherits: false;}@property --tw-opacity{syntax: "*";inherits: false;}@property --tw-saturate{syntax: "*";inherits: false;}@property --tw-sepia{syntax: "*";inherits: false;}@property --tw-drop-shadow{syntax: "*";inherits: false;}@property --tw-drop-shadow-color{syntax: "*";inherits: false;}@property --tw-drop-shadow-alpha{syntax: "<percentage>";inherits: false;initial-value: 100%;}@property --tw-drop-shadow-size{syntax: "*";inherits: false;}@property --tw-backdrop-blur{syntax: "*";inherits: false;}@property --tw-backdrop-brightness{syntax: "*";inherits: false;}@property --tw-backdrop-contrast{syntax: "*";inherits: false;}@property --tw-backdrop-grayscale{syntax: "*";inherits: false;}@property --tw-backdrop-hue-rotate{syntax: "*";inherits: false;}@property --tw-backdrop-invert{syntax: "*";inherits: false;}@property --tw-backdrop-opacity{syntax: "*";inherits: false;}@property --tw-backdrop-saturate{syntax: "*";inherits: false;}@property --tw-backdrop-sepia{syntax: "*";inherits: false;}@property --tw-outline-style{syntax: "*";inherits: false;initial-value: solid;}@property --tw-scale-x{syntax: "*";inherits: false;initial-value: 1;}@property --tw-scale-y{syntax: "*";inherits: false;initial-value: 1;}@property --tw-scale-z{syntax: "*";inherits: false;initial-value: 1;}@layer properties{@supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))){*,::before,::after,::backdrop{--tw-translate-x: 0;--tw-translate-y: 0;--tw-translate-z: 0;--tw-rotate-x: initial;--tw-rotate-y: initial;--tw-rotate-z: initial;--tw-skew-x: initial;--tw-skew-y: initial;--tw-space-y-reverse: 0;--tw-border-style: solid;--tw-gradient-position: initial;--tw-gradient-from: #0000;--tw-gradient-via: #0000;--tw-gradient-to: #0000;--tw-gradient-stops: initial;--tw-gradient-via-stops: initial;--tw-gradient-from-position: 0%;--tw-gradient-via-position: 50%;--tw-gradient-to-position: 100%;--tw-leading: initial;--tw-font-weight: initial;--tw-tracking: initial;--tw-shadow: 0 0 #0000;--tw-shadow-color: initial;--tw-shadow-alpha: 100%;--tw-inset-shadow: 0 0 #0000;--tw-inset-shadow-color: initial;--tw-inset-shadow-alpha: 100%;--tw-ring-color: initial;--tw-ring-shadow: 0 0 #0000;--tw-inset-ring-color: initial;--tw-inset-ring-shadow: 0 0 #0000;--tw-ring-inset: initial;--tw-ring-offset-width: 0px;--tw-ring-offset-color: #fff;--tw-ring-offset-shadow: 0 0 #0000;--tw-blur: initial;--tw-brightness: initial;--tw-contrast: initial;--tw-grayscale: initial;--tw-hue-rotate: initial;--tw-invert: initial;--tw-opacity: initial;--tw-saturate: initial;--tw-sepia: initial;--tw-drop-shadow: initial;--tw-drop-shadow-color: initial;--tw-drop-shadow-alpha: 100%;--tw-drop-shadow-size: initial;--tw-backdrop-blur: initial;--tw-backdrop-brightness: initial;--tw-backdrop-contrast: initial;--tw-backdrop-grayscale: initial;--tw-backdrop-hue-rotate: initial;--tw-backdrop-invert: initial;--tw-backdrop-opacity: initial;--tw-backdrop-saturate: initial;--tw-backdrop-sepia: initial;--tw-outline-style: solid;--tw-scale-x: 1;--tw-scale-y: 1;--tw-scale-z: 1;}}}</style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-void: #F2F6FB;
+      --bg-panel: #FFFFFF;
+      --bg-card: #E6EEF6;
+      --border-hud: #C6D5E5;
+      --cyan-hud: #0A84A6;
+      --amber-warn: #E04400;
+      --gold-warn: #B45309;
+      --text-main: #18232F;
+      --text-dim: #4F647A;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg-void);
+      color: var(--text-main);
+      font-family: 'Noto Sans TC', sans-serif;
+      background-image: 
+        linear-gradient(rgba(10, 132, 166, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10, 132, 166, 0.07) 1px, transparent 1px);
+      background-size: 36px 36px;
+      background-attachment: fixed;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .font-mono-tech { font-family: 'JetBrains Mono', monospace; }
+
+    .hud-panel {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.97), rgba(244, 248, 252, 0.98));
+      border: 1px solid var(--border-hud);
+      position: relative;
+      box-shadow: 0 8px 24px rgba(30, 70, 110, 0.10), inset 0 0 20px rgba(10, 132, 166, 0.03);
+    }
+
+    .hud-panel::before, .hud-panel::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-color: var(--cyan-hud);
+      border-style: solid;
+      pointer-events: none;
+      opacity: 0.75;
+    }
+    .hud-panel::before { top: -1px; left: -1px; border-width: 2px 0 0 2px; }
+    .hud-panel::after { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; }
+
+    .hud-warn::before, .hud-warn::after { border-color: var(--amber-warn); }
+
+    @keyframes radarSweep {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .radar-sweep {
+      animation: radarSweep 8s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .pulse-dot { animation: pulseGlow 2s infinite; }
+
+    /* 3D 戰術圖示容器與無縫黑底融合特效 */
+    .tactical-img-box {
+      background: radial-gradient(circle at center, #0B2630 0%, #000000 72%);
+      isolation: isolate;
+      border: 1px solid #BFD0E2;
+      position: relative;
+      overflow: hidden;
+    }
+    .tactical-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: lighten;
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+      filter: contrast(1.08) saturate(1.1);
+    }
+    .weapon-card:hover .tactical-img {
+      transform: scale(1.12);
+      filter: contrast(1.15) saturate(1.2) drop-shadow(0 0 10px rgba(10, 132, 166, 0.45));
+    }
+
+    @media (prefers-reduced-motion: reduce) { .radar-sweep, .pulse-dot { animation: none !important; } .tactical-img { transition: none !important; } }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #E6EEF6; }
+    ::-webkit-scrollbar-thumb { background: #BFD0E2; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--cyan-hud); }
+
+    .country-btn.active {
+      background: linear-gradient(90deg, rgba(10, 132, 166, 0.18), rgba(10, 132, 166, 0.04));
+      border-color: var(--cyan-hud);
+      box-shadow: 0 0 15px rgba(10, 132, 166, 0.22);
+    }
+    .ring { transition: r .55s cubic-bezier(.22,1,.36,1); }
+    #sim-table td, #sim-table th { vertical-align: top; }
+    input[type=range] { height: 6px; }
+    #sim3d-box { background: radial-gradient(circle at 50% 38%, #FFFFFF 0%, #DCE8F4 100%); border: 1px solid #C6D5E5; }
+    #sim3d-box canvas { display: block; }
+  </style>
+<!-- Monetag Official Zone Script (Zone 12297361) -->
+<script>(function(s){s.dataset.zone='12297361',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+</head>
+<body class="pb-16">
+
+  <!-- 頂部戰情室狀態列 -->
+  <header class="border-b border-[#C6D5E5] bg-[#F2F6FB]/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded border border-[#0A84A6]/60 bg-[#0A84A6]/10 flex items-center justify-center relative">
+          <svg class="w-5 h-5 text-[#0A84A6]" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="2.2"/>
+            <path d="M12 2a10 10 0 0 1 8.66 5l-4.33 2.5A5 5 0 0 0 12 7V2zm0 20a10 10 0 0 1-8.66-5l4.33-2.5A5 5 0 0 0 12 17v5zm8.66-15A10 10 0 0 1 22 12h-5a5 5 0 0 0-.67-2.5l4.33-2.5zM3.34 17A10 10 0 0 1 2 12h5a5 5 0 0 0 .67 2.5L3.34 17z" opacity="0.85"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base md:text-lg font-black tracking-wider text-slate-900">GLOBAL NUCLEAR ARSENAL COMMAND</h1>
+            <span class="hidden sm:inline-block text-[11px] font-mono-tech px-2 py-0.5 bg-[#0A84A6]/10 text-[#0A84A6] border border-[#0A84A6]/40 rounded">SIPRI 2026 // 數據截至 2026.01</span><span id="ver-chip" class="hidden md:inline-block text-[11px] font-mono-tech px-2 py-0.5 bg-white/10 text-[#2A394B] border border-white/20 rounded"></span>
+          </div>
+          <p class="text-xs text-[#4F647A]">全球擁核國家戰略威懾資料庫與當量對比模擬（公開估計值，僅供教育參考）</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4 md:gap-6 font-mono-tech text-xs">
+        <button id="lang-btn" class="px-2.5 py-1 rounded border border-[#C6D5E5] bg-[#F2F6FB] text-[#2A394B] hover:border-[#0A84A6] font-bold" aria-label="Language / 語言"></button>
+        
+        <div>
+          <span class="text-[#4F647A] block text-[11px]">擁核國家數</span>
+          <span class="text-[#0A84A6] font-bold text-sm">09 STATES</span>
+        </div>
+        <div class="h-6 w-[1px] bg-[#C6D5E5]"></div>
+        <div>
+          <span class="text-[#4F647A] block text-[11px]">軍事庫存（可用）</span>
+          <span class="text-slate-900 font-bold text-sm"><b id="hdr-stock" class="font-bold">~9,745</b> <span class="text-[11px] text-[#4F647A]">彈頭</span></span>
+        </div>
+        <div class="h-6 w-[1px] bg-[#C6D5E5]"></div>
+        <div>
+          <span class="text-[#4F647A] block text-[11px]">全球總庫存(含退役)</span>
+          <span class="text-[#B45309] font-bold text-sm"><b id="hdr-total" class="font-bold">~12,187</b> <span class="text-[11px] text-[#4F647A]">彈頭</span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 pt-6 space-y-6">
+
+    <section class="hud-panel p-3 text-xs text-[#2A394B] space-y-1.5">
+      <p><span class="text-[#B45309] font-bold font-mono-tech">NOTICE //</span> 美俄 New START 條約已於 2026 年 2 月到期，目前沒有雙邊限制，也不再有官方公布的部署數據；以下皆為研究機構估計值，不確定性高。</p>
+      <details><summary class="cursor-pointer text-[#0A84A6] font-mono-tech">名詞說明：軍事庫存、已部署、退役有何不同？</summary>
+        <ul class="mt-1.5 space-y-0.5 text-[#4F647A]"><li><b class="text-slate-900">已部署：</b>已裝在飛彈上或位於作戰基地的彈頭。</li><li><b class="text-slate-900">軍事庫存：</b>已部署＋集中儲存、稍作準備即可使用的彈頭。</li><li><b class="text-slate-900">總庫存：</b>軍事庫存＋已退役但尚未拆解的彈頭。</li><li><b class="text-slate-900">MIRV：</b>單枚飛彈載多枚可分別瞄準的彈頭。<b class="text-slate-900">kt／Mt：</b>千噸／百萬噸 TNT 當量。</li></ul></details>
+    </section>
+
+    <!-- 全球核武庫存佔比戰術條 -->
+    <section class="hud-panel p-4">
+      <div class="flex flex-wrap justify-between items-center mb-2 gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#E04400] pulse-dot"></span>
+          <h2 class="text-xs font-bold tracking-widest uppercase text-[#0A84A6] font-mono-tech">GLOBAL STOCKPILE DISTRIBUTION // 全球總庫存佔比分析</h2>
+        </div>
+        <span class="text-xs text-[#4F647A] font-mono-tech">美俄兩國合計佔全球總核武庫約 <strong class="text-slate-900">85.8%</strong></span>
+      </div>
+
+      <div id="stock-bar" class="w-full h-5 bg-[#F2F6FB] border border-[#C6D5E5] rounded-sm overflow-hidden flex font-mono-tech text-[11px] font-bold"></div>
+      <div id="stock-legend" class="flex flex-wrap gap-x-5 gap-y-1 mt-2.5 text-xs text-[#4F647A] font-mono-tech"></div>
+    </section>
+
+    <!-- 9 個擁核國家選擇器 -->
+    <section>
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-xs font-bold tracking-widest uppercase text-[#0A84A6] font-mono-tech">SELECT NUCLEAR STATE // 點選擁核國家檢視情報</h2>
+        <span class="text-xs text-[#4F647A]">數據來源：SIPRI Yearbook 2026（2026 年 1 月估計）</span>
+      </div>
+      <div id="country-selector" class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2.5"></div>
+    </section>
+
+    <!-- 國家詳細情報儀表板 -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- 左側：國家戰略概況與核三位一體 -->
+      <div class="lg:col-span-4 space-y-5">
+        <div class="hud-panel p-5">
+          <div class="flex items-center gap-4 border-b border-[#C6D5E5] pb-4">
+            <div id="detail-flag" class="w-16 h-11 rounded overflow-hidden border border-[#B7C8DA] shadow-lg shrink-0"></div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h2 id="detail-name" class="text-2xl font-black text-slate-900">俄羅斯</h2>
+                <span id="detail-code" class="font-mono-tech text-xs px-1.5 py-0.5 bg-[#0A84A6]/10 text-[#0A84A6] border border-[#0A84A6]/40 rounded">RUS</span>
+              </div>
+              <p id="detail-en" class="text-xs font-mono-tech text-[#4F647A] tracking-wider uppercase">RUSSIAN FEDERATION</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-2 my-4 text-center font-mono-tech">
+            <div class="bg-[#F2F6FB] border border-[#C6D5E5] p-2.5 rounded">
+              <span class="text-[11px] text-[#4F647A] block">軍事庫存（可用）</span>
+              <span id="stat-stockpile" class="text-base md:text-lg font-bold text-[#0A84A6]">~4,400</span>
+            </div>
+            <div class="bg-[#F2F6FB] border border-[#C6D5E5] p-2.5 rounded">
+              <span class="text-[11px] text-[#4F647A] block">總庫存(含退役)</span>
+              <span id="stat-total" class="text-base md:text-lg font-bold text-slate-900">~5,420</span>
+            </div>
+            <div class="bg-[#F2F6FB] border border-[#C6D5E5] p-2.5 rounded">
+              <span class="text-[11px] text-[#4F647A] block">戰備已部署</span>
+              <span id="stat-deployed" class="text-base md:text-lg font-bold text-[#E04400]">~1,796</span>
+            </div>
+          </div>
+
+          <div id="detail-meta" class="flex flex-wrap gap-1.5 mb-4 text-xs font-mono-tech"></div>
+
+          <div class="mb-4">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-xs font-bold text-[#0A84A6] font-mono-tech">NUCLEAR TRIAD // 核三位一體投射能力</span>
+              <span id="triad-badge" class="text-[11px] font-mono-tech px-2 py-0.5 rounded bg-[#0A84A6]/15 text-[#0A84A6]">完整具備</span>
+            </div>
+            <div id="triad-matrix" class="space-y-2"></div>
+          </div>
+
+          <div class="bg-[#F2F6FB]/80 border-l-2 border-[#B45309] p-3 text-xs text-[#2A394B] leading-relaxed">
+            <span class="text-[#B45309] font-bold block mb-1 font-mono-tech">STRATEGIC DOCTRINE // 戰略態勢摘要</span>
+            <p id="detail-summary"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右側：核彈頭型號與3D戰術圖鑑 -->
+      <div class="lg:col-span-8">
+        <div class="hud-panel p-5 h-full flex flex-col">
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#C6D5E5] pb-4 mb-4">
+            <div>
+              <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+                <span class="text-[#0A84A6] font-mono-tech">[ARSENAL CATALOG]</span>
+                <span>現役主力核彈頭與投射載具圖鑑</span>
+              </h3>
+              <p class="text-xs text-[#4F647A] mt-0.5">點擊下方載具分類篩選器，或直接將型號代入底部「威力模擬器」</p>
+            </div>
+
+            <div id="type-filters" class="flex flex-wrap gap-1.5 font-mono-tech text-xs">
+              <button data-filter="all" class="filter-btn active px-2.5 py-1 rounded border border-[#0A84A6] bg-[#0A84A6]/20 text-slate-900">全部載具</button>
+              <button data-filter="icbm" class="filter-btn px-2.5 py-1 rounded border border-[#C6D5E5] bg-[#F2F6FB] text-[#4F647A] hover:text-slate-900">陸基飛彈</button>
+              <button data-filter="slbm" class="filter-btn px-2.5 py-1 rounded border border-[#C6D5E5] bg-[#F2F6FB] text-[#4F647A] hover:text-slate-900">潛艦水下</button>
+              <button data-filter="bomber" class="filter-btn px-2.5 py-1 rounded border border-[#C6D5E5] bg-[#F2F6FB] text-[#4F647A] hover:text-slate-900">空基投射</button>
+            </div>
+          </div>
+
+          <!-- 武器卡片列表 -->
+          <div id="weapons-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1 content-start"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 互動模組：核爆當量與效應半徑對比模擬器 v2 -->
+    <section id="simulator-section" class="hud-panel hud-warn p-5 md:p-6">
+      <div class="flex flex-wrap items-start justify-between gap-3 border-b border-[#C6D5E5] pb-4 mb-5">
+        <div>
+          <div class="flex items-center gap-2"><span class="px-2 py-0.5 text-xs font-mono-tech font-bold bg-[#FF4D00] text-white rounded">INTERACTIVE LAB</span><h2 class="text-lg font-black text-slate-900">核爆當量與效應半徑對比模擬器 <span class="text-xs font-mono-tech text-[#0A84A6]">v3 · 3D</span></h2></div>
+          <p class="text-xs text-[#4F647A] mt-1">選兩枚彈頭或拖曳自訂當量，對比火球、衝擊波與熱輻射的影響範圍（基準：廣島 15 kt；最佳爆高空爆）</p>
+        </div>
+        <div class="flex gap-2 text-xs font-mono-tech">
+          <button id="sim-swap" class="px-3 py-1.5 rounded border border-[#C6D5E5] bg-[#F2F6FB] text-[#2A394B] hover:border-[#0A84A6]">⇄ 對調 A／B</button>
+          <button id="sim-share" class="px-3 py-1.5 rounded border border-[#C6D5E5] bg-[#F2F6FB] text-[#2A394B] hover:border-[#0A84A6]">🔗 複製分享連結</button>
+          <button id="sim-reset" class="px-3 py-1.5 rounded border border-[#C6D5E5] bg-[#F2F6FB] text-[#2A394B] hover:border-[#0A84A6]">↺ 重設</button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div class="lg:col-span-5 space-y-4">
+          <div id="sim-card-a"></div><div id="sim-card-b"></div>
+          <div>
+            <div class="text-xs font-bold text-[#0A84A6] font-mono-tech mb-1.5">顯示圖層</div>
+            <div id="sim-layers" class="flex flex-wrap gap-1.5 text-xs font-mono-tech"></div>
+            <div class="flex flex-wrap gap-1.5 mt-2 text-xs font-mono-tech">
+              <button id="sim-burst" class="px-2.5 py-1 rounded border"></button><button id="sim-ref" class="px-2.5 py-1 rounded border"></button><button id="sim-scale" class="px-2.5 py-1 rounded border"></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-7 flex flex-col items-center justify-center bg-[#F2F6FB] border border-[#C6D5E5] rounded p-4 relative overflow-hidden min-h-[380px]">
+          <div class="absolute top-3 left-3 font-mono-tech text-xs text-[#4F647A] space-y-0.5 z-10">
+            <div>RADAR SCALE: <span id="radar-scale-label" class="text-slate-900">--</span></div>
+            <div id="radar-mode-label" class="text-[#B45309]"></div>
+          </div>
+          <div class="absolute top-3 right-3 z-10 flex gap-1.5 text-xs font-mono-tech"><button id="tab-3d" class="px-2.5 py-1 rounded border">3D 立體</button><button id="tab-2d" class="px-2.5 py-1 rounded border">2D 雷達</button></div>
+          <div id="view3d" class="w-full relative pt-6"><div id="sim3d-box" class="w-full h-[340px] sm:h-[420px] rounded cursor-grab focus:outline focus:outline-1 focus:outline-[#0A84A6]/60" tabindex="0" role="img" aria-label="核爆效應半徑 3D 立體對比圖，可拖曳旋轉、滾輪縮放、方向鍵調整視角"></div><p class="text-center text-[11px] text-[#4F647A] mt-1.5 font-mono-tech">拖曳旋轉・滾輪縮放・雙擊重設視角｜地面圓盤＝效應半徑，半球＝火球與 20 psi 範圍（示意）</p></div>
+          <div id="view2d" class="w-full flex justify-center hidden"><svg id="blast-radar-svg" viewBox="0 0 400 400" class="w-full max-w-[420px] h-auto" role="img" aria-label="兩枚核彈頭效應半徑的同心圓對比圖">
+            <g stroke="#D3DEEA" stroke-width="1" fill="none"><circle cx="200" cy="200" r="45" stroke-dasharray="3 3"/><circle cx="200" cy="200" r="90" stroke-dasharray="3 3"/><circle cx="200" cy="200" r="135" stroke-dasharray="3 3"/><circle cx="200" cy="200" r="180"/><line x1="200" y1="10" x2="200" y2="390"/><line x1="10" y1="200" x2="390" y2="200"/></g>
+            <defs><linearGradient id="sweepGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#0A84A6" stop-opacity="0.18"/><stop offset="100%" stop-color="#0A84A6" stop-opacity="0"/></linearGradient></defs>
+            <path d="M200,200 L200,20 A180,180 0 0,1 355,110 Z" fill="url(#sweepGrad)" class="radar-sweep"/>
+            <circle id="ref-ring" class="ring" cx="200" cy="200" r="0" fill="none" stroke="#5B7086" stroke-width="1.2" stroke-dasharray="2 4"/>
+            <g id="rings-b"></g><g id="rings-a"></g>
+            <circle cx="200" cy="200" r="2.5" fill="#0F1B2A"/>
+            <text id="ring-l1" x="204" y="153" fill="#5B7086" font-size="9" font-family="JetBrains Mono"></text><text id="ring-l2" x="204" y="108" fill="#5B7086" font-size="9" font-family="JetBrains Mono"></text><text id="ring-l3" x="204" y="63" fill="#5B7086" font-size="9" font-family="JetBrains Mono"></text><text id="ring-l4" x="204" y="18" fill="#4F647A" font-size="9" font-family="JetBrains Mono"></text>
+          </svg></div>
+          <div class="flex flex-wrap justify-center gap-4 text-xs font-mono-tech mt-1"><span class="text-[#0A84A6]">● 彈頭 A</span><span class="text-[#E04400]">● 彈頭 B</span><span class="text-[#5B7086]">┄ 廣島 5 psi 基準圈</span><span id="radar-note" class="text-[#B45309]"></span></div>
+        </div>
+      </div>
+
+      <p id="burst-note" class="hidden mt-5 -mb-3 text-xs text-[#B45309] bg-[#F2F6FB] p-3 rounded border border-[#B45309]/30 leading-relaxed"></p>
+      <div id="sim-insight" class="mt-5 text-sm text-[#18232F] bg-[#F2F6FB] border-l-2 border-[#B45309] p-3 leading-relaxed"></div>
+      <div class="mt-4 overflow-x-auto"><table id="sim-table" class="w-full text-xs font-mono-tech"></table></div>
+      <p class="mt-4 text-xs text-[#B45309] bg-[#F2F6FB]/60 p-3 rounded border border-[#B45309]/30 leading-relaxed">⚠ 簡化模型：半徑依公開的 NUKEMAP 輸出校正並以立方根（衝擊波）與 0.447 次方（熱輻射）縮放，預設為最佳爆高空爆（可切換地爆概估）、晴天、平坦地形，僅為概估；實際效應受爆高、天候、地形與建物影響。半徑只呈現部分物理效應，輻射落塵、長期健康與環境影響遠超這些範圍。本工具刻意不提供城市標定或傷亡估算。</p>
+      <a class="sponsor mt-4 flex items-center justify-between gap-3 rounded-lg border border-amber-400/40 bg-amber-400/10 px-4 py-2.5 text-xs text-amber-800 transition hover:bg-amber-400/20" target="_blank" rel="noopener noreferrer"><span><b class="mr-2 rounded bg-amber-400 px-1.5 py-0.5 text-[11px] font-black text-slate-950">AD 贊助</b>喜歡這個模擬器？點擊精選推薦，支持網站免費營運</span><span class="shrink-0 font-black">前往看看 ↗</span></a>
+    </section>
+
+    <!-- SPONSORED -->
+    <section class="rounded-xl border border-[#0A84A6]/30 bg-gradient-to-r from-amber-50 via-white to-sky-50 p-4 text-slate-900 shadow-md">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-3.5">
+          <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-amber-400/20 text-xl text-amber-300 ring-1 ring-amber-400/40">↗</div>
+          <div>
+            <div class="flex flex-wrap items-center gap-2"><span class="rounded bg-amber-400 px-1.5 py-0.5 text-[11px] font-black tracking-wider text-slate-950">SPONSORED · 推薦資源</span><span class="text-sm font-extrabold">國際安全與熱門精選內容推薦</span></div>
+            <p class="mt-0.5 text-xs text-slate-600">本站由獨立開發者免費維護，點擊右側探索精選合作夥伴內容以支持網站持續營運。</p>
+          </div>
+        </div>
+        <a class="sponsor inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-400 to-orange-500 px-5 py-2.5 text-sm font-black text-slate-950 shadow-lg shadow-amber-500/25 transition hover:from-amber-300 hover:to-orange-400 active:scale-95" target="_blank" rel="noopener noreferrer">立即前往探索 ↗</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-7xl mx-auto px-4 pt-8 pb-4 text-center text-xs text-[#4F647A] space-y-1.5">
+    <p id="ver-foot" class="font-mono-tech font-bold text-[#2A394B]"></p>
+    <p>© 2026 全球核武庫資料庫 ｜ 版權所有 · All Rights Reserved</p>
+    <p>數據來源：<a href="https://www.sipri.org/yearbook/2026" target="_blank" rel="noreferrer" class="text-[#0A84A6] hover:underline">SIPRI Yearbook 2026</a>（第 8 章 World nuclear forces，2026 年 1 月估計）。各國核武數量與當量多為研究機構依公開資訊推估，存在相當不確定性，僅供教育與研究參考。載具圖片為示意圖，非實物照片。</p>
+  </footer>
+
+  <div id="bottomAd" class="fixed bottom-3 left-1/2 z-50 w-[94%] max-w-2xl -translate-x-1/2 rounded-2xl border border-amber-300 bg-white/95 px-4 py-2.5 text-slate-900 shadow-2xl backdrop-blur">
+    <div class="flex items-center justify-between gap-3">
+      <a class="sponsor group flex min-w-0 flex-1 items-center gap-2.5" target="_blank" rel="noopener noreferrer"><span class="shrink-0 rounded-md bg-teal-50 px-2 py-0.5 text-[11px] font-black text-teal-700 ring-1 ring-teal-500/40">AD 贊助</span><span class="truncate text-xs font-bold text-slate-800 transition group-hover:text-amber-600">🔥 點擊查看熱門精選推薦｜支持全球核武庫資料庫免費營運</span></a>
+      <div class="flex shrink-0 items-center gap-2"><a class="sponsor rounded-lg bg-amber-400 px-3 py-1 text-xs font-black text-slate-950 transition hover:bg-amber-300" target="_blank" rel="noopener noreferrer">前往看看</a><button id="closeAd" aria-label="關閉廣告橫幅" class="rounded-lg px-1.5 py-1 text-xs text-slate-500 hover:bg-slate-100 hover:text-slate-900">✕</button></div>
+    </div>
+  </div>
+
+  <script>
+    // 1. 全向量 SVG 國旗庫（確保跨平台完美顯示）
+    const FLAGS = {
+      RU: `<svg viewBox="0 0 30 20" class="w-full h-full object-cover"><rect width="30" height="6.67" fill="#FFFFFF"/><rect y="6.67" width="30" height="6.67" fill="#0039A6"/><rect y="13.33" width="30" height="6.67" fill="#D52B1E"/></svg>`,
+      US: `<svg viewBox="0 0 30 20" class="w-full h-full object-cover"><rect width="30" height="20" fill="#B22234"/><path d="M0,2.3H30M0,5.4H30M0,8.5H30M0,11.5H30M0,14.6H30M0,17.7H30" stroke="#FFFFFF" stroke-width="1.5"/><rect width="13" height="10.8" fill="#3C3B6E"/><g fill="#FFFFFF"><circle cx="3" cy="2.5" r="0.7"/><circle cx="6.5" cy="2.5" r="0.7"/><circle cx="10" cy="2.5" r="0.7"/><circle cx="4.8" cy="5.4" r="0.7"/><circle cx="8.2" cy="5.4" r="0.7"/><circle cx="3" cy="8.2" r="0.7"/><circle cx="6.5" cy="8.2" r="0.7"/><circle cx="10" cy="8.2" r="0.7"/></g></svg>`,
+      CN: `<svg viewBox="0 0 30 20" class="w-full h-full object-cover"><rect width="30" height="20" fill="#DE2910"/><polygon points="5,2 6.1,5.4 3.2,3.3 6.8,3.3 3.9,5.4" fill="#FFDE00"/><circle cx="9.5" cy="2" r="0.6" fill="#FFDE00"/><circle cx="11" cy="4" r="0.6" fill="#FFDE00"/><circle cx="11" cy="6.5" r="0.6" fill="#FFDE00"/><circle cx="9.5" cy="8.5" r="0.6" fill="#FFDE00"/></svg>`,
+      FR: `<svg viewBox="0 0 30 20" class="w-full h-full object-cover"><rect width="10" height="20" fill="#002395"/><rect x="10" width="10" height="20" fill="#FFFFFF"/><rect x="20" width="10" height="20" fill="#ED2939"/></svg>`,
+      UK: `<svg viewBox="0 0 30 20" class="w-full h-full object-cover"><rect width="30" height="20" fill="#012169"/><path d="M0,0 L30,20 M30,0 L0,20" stroke="#FFFFFF" stroke-width="3.5"/><path d="M0,0 L30,20 M30,0 L0,20" stroke="#C8102E" stroke-width="2"/><path d="M15,0 V20 M0,10 H30" stroke="#FFFFFF" stroke-width="5.5"/><path d="M15,0 V20 M0,10 H30" stroke="#C8102E" stroke-width="3.3"/></svg>`,
+      IN: `<svg viewBox="0 0 30 20" class="w-full h-full object-cover"><rect width="30" height="6.67" fill="#FF9933"/><rect y="6.67" width="30" height="6.67" fill="#FFFFFF"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.5" fill="none" stroke="#000080" stroke-width="0.8"/><circle cx="15" cy="10" r="0.6" fill="#000080"/></svg>`,
+      PK: `<svg viewBox="0 0 30 20" class="w-full h-full object-cover"><rect width="30" height="20" fill="#01411C"/><rect width="7.5" height="20" fill="#FFFFFF"/><circle cx="19" cy="10" r="5" fill="#FFFFFF"/><circle cx="20.5" cy="8.8" r="4.2" fill="#01411C"/><polygon points="21,6.5 21.6,8.2 23.3,8.2 21.9,9.2 22.4,10.8 21,9.8 19.6,10.8 20.1,9.2 18.7,8.2 20.4,8.2" fill="#FFFFFF"/></svg>`,
+      IL: `<svg viewBox="0 0 30 20" class="w-full h-full object-cover"><rect width="30" height="20" fill="#FFFFFF"/><rect y="2.2" width="30" height="2.6" fill="#0038B8"/><rect y="15.2" width="30" height="2.6" fill="#0038B8"/><polygon points="15,6.2 18.2,11.8 11.8,11.8" fill="none" stroke="#0038B8" stroke-width="1.1"/><polygon points="15,13.8 18.2,8.2 11.8,8.2" fill="none" stroke="#0038B8" stroke-width="1.1"/></svg>`,
+      KP: `<svg viewBox="0 0 30 20" class="w-full h-full object-cover"><rect width="30" height="20" fill="#024FA2"/><rect y="3.5" width="30" height="13" fill="#FFFFFF"/><rect y="4.3" width="30" height="11.4" fill="#ED1C27"/><circle cx="10.5" cy="10" r="3.8" fill="#FFFFFF"/><polygon points="10.5,6.5 11.4,9.2 14.2,9.2 11.9,10.8 12.8,13.5 10.5,11.8 8.2,13.5 9.1,10.8 6.8,9.2 9.6,9.2" fill="#ED1C27"/></svg>`
+    };
+
+    // 2. 對應你製作的 8 款 3D 戰術模型圖片路徑 (assets/ 資料夾)
+    const WEAPON_ASSETS = {
+      icbm: { src: 'assets/icbm.jpg', label: 'ICBM 洲際飛彈' },
+      slbm: { src: 'assets/slbm.jpg', label: 'SLBM 潛射飛彈' },
+      stealth_bomber: { src: 'assets/stealth_bomber.jpg', label: '隱形戰略轟炸機' },
+      supersonic_bomber: { src: 'assets/supersonic_bomber.jpg', label: '超音速轟炸機' },
+      alcm: { src: 'assets/alcm.jpg', label: '核巡弋飛彈' },
+      gravity_bomb: { src: 'assets/gravity_bomb.jpg', label: '戰術重力核彈' },
+      mirv: { src: 'assets/mirv.jpg', label: 'MIRV 多彈頭載具' },
+      uuv: { src: 'assets/uuv.jpg', label: '核動力無人潛航器' }
+    };
+
+    // 3. 全球 9 大擁核國完整資料庫（已精準配對 8 款 3D 圖片）
+    const NUCLEAR_DATA = [
+      {
+        id: 'RU',
+        name: '俄羅斯',
+        en: 'RUSSIAN FEDERATION',
+        stockpile: '~4,400',
+        total: '~5,420',
+        deployed: '~1,796',
+        triadStatus: '完整核三位一體',
+        triad: [
+          { domain: '陸基 (ICBM)', active: true, desc: '324 具洲際飛彈發射器（亞爾斯、白楊-M、沃耶沃達；薩爾馬特尚未形成戰力）' },
+          { domain: '海基 (SSBN)', active: true, desc: '約 13 艘戰略核潛艦（北風之神級、德爾塔 IV 級）' },
+          { domain: '空基 (BOMBER)', active: true, desc: 'Tu-160 白天鵝與 Tu-95MS 戰略轟炸機隊' }
+        ],
+        summary: '擁有全球最大規模核武庫，並保留約 1,800 枚非戰略（戰術）核彈頭。近年積極換裝「亞爾斯」機動飛彈與「北風之神」核潛艦；「薩爾馬特」重型飛彈與「波塞冬」核魚雷仍在研發測試階段。',
+        weapons: [
+          { name: 'RS-28 薩爾馬特 (Sarmat)', category: 'icbm', asset: 'mirv', yieldText: '500 – 800 kt (×10 MIRV，設計值)', yieldKt: 750, range: '18,000 km', platform: '陸基重型井射洲際飛彈（研發嚴重延宕、試射多次失敗，尚未列入現役）' },
+          { name: 'RS-24 亞爾斯 (Yars)', category: 'icbm', asset: 'icbm', yieldText: '250 kt (1–3 枚 MIRV)', yieldKt: 250, range: '11,000 km', platform: '陸基公路機動 / 井射主力洲際彈道飛彈' },
+          { name: 'RSM-56 布拉瓦 (Bulava)', category: 'slbm', asset: 'slbm', yieldText: '150 kt (4–6 枚 MIRV)', yieldKt: 150, range: '9,300 km', platform: '北風之神級戰略核潛艦潛射彈道飛彈' },
+          { name: 'Kh-102 空射隱形巡弋飛彈', category: 'bomber', asset: 'supersonic_bomber', yieldText: '250 kt (可調當量)', yieldKt: 250, range: '4,500 km', platform: 'Tu-160 白天鵝 / Tu-95MS 戰略轟炸機掛載' },
+          { name: '波塞冬 (Poseidon) 核魚雷', category: 'slbm', asset: 'uuv', yieldText: '2,000 kt (2 Mt 級)', yieldKt: 2000, range: '10,000 km', platform: '核動力無人潛航器（2025 年宣稱試射；專用載艦「哈巴羅夫斯克號」尚未服役）' }
+        ]
+      },
+      {
+        id: 'US',
+        name: '美國',
+        en: 'UNITED STATES OF AMERICA',
+        stockpile: '~3,700',
+        total: '~5,042',
+        deployed: '~1,770',
+        triadStatus: '完整核三位一體',
+        triad: [
+          { domain: '陸基 (ICBM)', active: true, desc: '400 座地下發射井（義勇兵三型 Minuteman III）' },
+          { domain: '海基 (SSBN)', active: true, desc: '14 艘俄亥俄級戰略核潛艦（配備三叉戟 II D5）' },
+          { domain: '空基 (BOMBER)', active: true, desc: 'B-2A 幽靈隱形轟炸機、B-52H 與北約戰術核共享機隊' }
+        ],
+        summary: '核武庫高度標準化與現代化，約 55%（約 970 枚）的已部署彈頭配置於隱蔽性極高的俄亥俄級核潛艦上。另有約 100–120 枚 B61-12 戰術核彈部署於歐洲 6–7 座空軍基地（5–6 個北約國家）。',
+        weapons: [
+          { name: 'W88 潛射熱核彈頭', category: 'slbm', asset: 'mirv', yieldText: '455 – 475 kt', yieldKt: 475, range: '12,000 km', platform: '俄亥俄級核潛艦 / 三叉戟 II D5 飛彈（主力高當量彈頭）' },
+          { name: 'W76-1 / W76-2 潛射彈頭', category: 'slbm', asset: 'slbm', yieldText: '90 kt / 8 kt (低當量)', yieldKt: 90, range: '12,000 km', platform: '三叉戟 II D5 飛彈（W76-1 約 1,500 枚為美軍數量最多）' },
+          { name: 'W78 / W87 陸基洲際彈頭', category: 'icbm', asset: 'icbm', yieldText: '300 – 350 kt', yieldKt: 335, range: '13,000 km', platform: 'LGM-30G 義勇兵三型 (Minuteman III) 地下井射飛彈' },
+          { name: 'B61-12 精準導引核炸彈', category: 'bomber', asset: 'gravity_bomb', yieldText: '0.3 – 50 kt (可調)', yieldKt: 50, range: '戰機投擲', platform: 'B-2A 隱形轟炸機、F-35A、F-15E 掛載之最新導引重力核彈' },
+          { name: 'B83-1 大型戰略重力核彈', category: 'bomber', asset: 'stealth_bomber', yieldText: '1,200 kt (1.2 Mt)', yieldKt: 1200, range: '轟炸機投擲', platform: 'B-2A 掛載；SIPRI 認為已退出現役、除役中（新型 B61-13 高當量炸彈已開始生產）' }
+        ]
+      },
+      {
+        id: 'CN',
+        name: '中國',
+        en: "PEOPLE'S REPUBLIC OF CHINA",
+        stockpile: '~620',
+        total: '~620',
+        deployed: '~34',
+        triadStatus: '完整核三位一體',
+        triad: [
+          { domain: '陸基 (ICBM)', active: true, desc: 'DF-41、DF-31AG 機動發射車與北部新建三大發射井區（約 320 座 DF-31B 井）' },
+          { domain: '海基 (SSBN)', active: true, desc: '6 艘 094 型（晉級）核潛艦配備巨浪-3 飛彈' },
+          { domain: '空基 (BOMBER)', active: true, desc: '轟-6N (H-6N) 戰略轟炸機掛載空射彈道飛彈' }
+        ],
+        summary: '奉行「不首先使用核武」政策，目前正處於核武庫快速現代化與擴張階段。平時多數彈頭與飛彈分離儲存，但部分新型陸基與海基單位已進入戰備值班。',
+        weapons: [
+          { name: 'DF-5A / DF-5B 洲際飛彈', category: 'icbm', asset: 'icbm', yieldText: '當量不公開（舊型為百萬噸級）', yieldKt: 4000, range: '13,000 km', platform: '井射液體洲際飛彈（DF-5B 具 MIRV，最多約 5 枚；當量為推估）' },
+          { name: 'DF-41 東風-41 洲際飛彈', category: 'icbm', asset: 'mirv', yieldText: '當量不公開（推估數百 kt，最多約 3 枚 MIRV）', yieldKt: 250, range: '14,000 km', platform: '公路機動 / 井射固體燃料飛彈（具備分導多彈頭能力）' },
+          { name: 'JL-3 巨浪-3 潛射洲際飛彈', category: 'slbm', asset: 'slbm', yieldText: '150 – 300 kt (MIRV)', yieldKt: 200, range: '10,000+ km', platform: '094 型核動力彈道飛彈潛艦（可自近海覆蓋北美目標）' },
+          { name: '轟-6N 空射核彈道飛彈', category: 'bomber', asset: 'stealth_bomber', yieldText: '200 – 300 kt (推估)', yieldKt: 250, range: '3,000+ km', platform: '轟-6N 轟炸機機腹半埋式掛載（補齊空基三位一體拼圖）' }
+        ]
+      },
+      {
+        id: 'FR',
+        name: '法國',
+        en: 'FRENCH REPUBLIC',
+        stockpile: '~290',
+        total: '~370',
+        deployed: '~280',
+        triadStatus: '海空雙位一體',
+        triad: [
+          { domain: '陸基 (ICBM)', active: false, desc: '已於 1996 年主動全面裁撤所有陸基核飛彈' },
+          { domain: '海基 (SSBN)', active: true, desc: '4 艘凱旋級戰略核潛艦（永遠保持至少 1 艘在深海巡弋）' },
+          { domain: '空基 (BOMBER)', active: true, desc: '陣風戰機（含戴高樂號航母艦載機）掛載核巡弋飛彈' }
+        ],
+        summary: '歐盟唯一擁核國，具備完全獨立的核武研發與生產體系。維持「嚴格足夠」原則，依靠高度隱蔽的凱旋級核潛艦與陣風戰機形成海空雙重威懾。2026 年 3 月宣布將增加彈頭並不再公布數量，並與英國簽署《諾斯伍德宣言》協調核威懾。',
+        weapons: [
+          { name: 'TNO 海洋核彈頭 (M51 飛彈)', category: 'slbm', asset: 'slbm', yieldText: '100 – 150 kt (×6 MIRV)', yieldKt: 150, range: '9,000+ km', platform: '凱旋級戰略核潛艦 / M51.2 與 M51.3 潛射洲際飛彈' },
+          { name: 'TNA 空射核彈頭 (ASMP-A)', category: 'bomber', asset: 'alcm', yieldText: '≤300 kt（實際當量不明）', yieldKt: 300, range: '約 500–600 km', platform: '陣風戰鬥機 (Rafale) 掛載之超音速衝壓核巡弋飛彈' }
+        ]
+      },
+      {
+        id: 'UK',
+        name: '英國',
+        en: 'UNITED KINGDOM',
+        stockpile: '~225',
+        total: '~225',
+        deployed: '~120',
+        triadStatus: '單一海基威懾',
+        triad: [
+          { domain: '陸基 (ICBM)', active: false, desc: '無陸基核飛彈部隊' },
+          { domain: '海基 (SSBN)', active: true, desc: '4 艘先鋒級核潛艦（全年 365 天不間斷海底威懾巡邏）' },
+          { domain: '空基 (BOMBER)', active: false, desc: '已於 1998 年退役所有空投核炸彈（2025 年宣布購買 12 架 F-35A，預計 2030 年代初重返北約核分享任務）' }
+        ],
+        summary: '全球唯一將 100% 核威懾力量集中於潛艦部隊的國家（連續海上威懾 CASD）。雖向美國租借三叉戟飛彈載具，但核彈頭完全由英國自主設計製造與控制。英國已不再公布彈頭數量，上限提高至 260 枚。',
+        weapons: [
+          { name: 'Holbrook 潛射熱核彈頭', category: 'slbm', asset: 'slbm', yieldText: '100 kt（或有較低當量選項）', yieldKt: 100, range: '12,000 km', platform: '先鋒級 (Vanguard-class) 核潛艦 / 三叉戟 II D5 飛彈' }
+        ]
+      },
+      {
+        id: 'IN',
+        name: '印度',
+        en: 'REPUBLIC OF INDIA',
+        stockpile: '~190',
+        total: '~190',
+        deployed: '~12',
+        triadStatus: '初具核三位一體',
+        triad: [
+          { domain: '陸基 (ICBM)', active: true, desc: '烈火系列 (Agni-I 至 Agni-V) 機動彈道飛彈' },
+          { domain: '海基 (SSBN)', active: true, desc: '3 艘殲敵者級 (Arihant-class) 核動力彈道飛彈潛艦（Arihant、Arighaat、Aridhaman）' },
+          { domain: '空基 (BOMBER)', active: true, desc: '美洲虎與幻象 2000H 戰機投擲核重力炸彈' }
+        ],
+        summary: '奉行「不首先使用核武」政策，傳統威懾重心針對巴基斯坦，但近年「烈火-5」中遠程飛彈與「殲敵者級」核潛艦服役後，已將戰略威懾範圍擴大至中國全境。',
+        weapons: [
+          { name: '烈火-5 (Agni-V) 中遠程彈道飛彈', category: 'icbm', asset: 'mirv', yieldText: '20 – 40 kt (測試 MIRV)', yieldKt: 40, range: '5,000+ km', platform: '筒裝公路機動中遠程飛彈（SIPRI 歸類為 IRBM，具 MIRV 能力，射程覆蓋中國全境）' },
+          { name: 'K-15 / K-4 潛射彈道飛彈', category: 'slbm', asset: 'slbm', yieldText: '12 – 40 kt (推估)', yieldKt: 30, range: '750 / 3,500 km', platform: '殲敵者級 (INS Arihant) 核動力彈道飛彈潛艦' },
+          { name: '空投戰術核重力炸彈', category: 'bomber', asset: 'gravity_bomb', yieldText: '12 – 40 kt', yieldKt: 25, range: '戰機投擲', platform: '美洲虎、幻象 2000H 戰鬥轟炸機掛載' }
+        ]
+      },
+      {
+        id: 'PK',
+        name: '巴基斯坦',
+        en: 'ISLAMIC REPUBLIC OF PAKISTAN',
+        stockpile: '~170',
+        total: '~170',
+        deployed: '0 (分離儲存)',
+        triadStatus: '陸空為主 / 海基測試',
+        triad: [
+          { domain: '陸基 (ICBM)', active: true, desc: '沙欣 (Shaheen)、高里與納斯爾戰術核飛彈' },
+          { domain: '海基 (SSBN)', active: false, desc: '無核潛艦，但已在柴電潛艦測試巴布爾-3 潛射核巡弋飛彈' },
+          { domain: '空基 (BOMBER)', active: true, desc: '以幻象 III/V 戰機為主（JF-17 與 Raad 空射巡弋飛彈的核任務屬推估）' }
+        ],
+        summary: '為抗衡印度常規軍力優勢，採取「全譜系威懾」與「不排除率先使用」策略，特別發展射程僅 70 公里的低當量戰術核飛彈以阻止印軍裝甲部隊推進。',
+        weapons: [
+          { name: '沙欣-3 / 阿巴比爾中程飛彈', category: 'icbm', asset: 'mirv', yieldText: '10 – 40 kt (MIRV)', yieldKt: 35, range: '2,750 km', platform: '公路機動中程彈道飛彈（覆蓋印度全境；Shaheen-III 尚未部署、Ababeel 尚未服役）' },
+          { name: '納斯爾 (Nasr) 戰術核飛彈', category: 'icbm', asset: 'icbm', yieldText: '0.5 – 5 kt (極低當量)', yieldKt: 5, range: '70 km', platform: '多管機動發射車（專為戰場反裝甲作戰設計）' },
+          { name: 'Raad / 巴布爾-3 核巡弋飛彈', category: 'bomber', asset: 'alcm', yieldText: '10 – 35 kt', yieldKt: 20, range: '450 – 600 km', platform: 'JF-17 戰機空射（推估）；巴布爾-3 潛射型預計 2027 年前後' }
+        ]
+      },
+      {
+        id: 'IL',
+        name: '以色列',
+        en: 'STATE OF ISRAEL',
+        stockpile: '~90',
+        total: '~90',
+        deployed: '0 (核模糊政策)',
+        triadStatus: '推估具備三位一體',
+        triad: [
+          { domain: '陸基 (ICBM)', active: true, desc: '傑里科-2 與傑里科-3 遠程/洲際彈道飛彈（洞庫部署）' },
+          { domain: '海基 (SSBN)', active: true, desc: '德製海豚級柴電潛艦配備大力水手潛射核巡弋飛彈' },
+          { domain: '空基 (BOMBER)', active: true, desc: 'F-15I 與 F-16I 戰鬥轟炸機投擲核重力炸彈' }
+        ],
+        summary: '官方長期奉行「既不承認也不否認」的核模糊政策。國際情報界普遍認定其擁有約 90 枚精密熱核彈頭，並透過海豚級潛艦確保中東地區的二次核打擊能力。',
+        weapons: [
+          { name: '傑里科-3 (Jericho III) 洲際飛彈', category: 'icbm', asset: 'icbm', yieldText: '100 – 400 kt (推估)', yieldKt: 250, range: '4,800 – 6,500 km', platform: '地下洞庫機動發射車（三級固體燃料彈道飛彈）' },
+          { name: '大力水手 (Popeye Turbo) 潛射飛彈', category: 'slbm', asset: 'alcm', yieldText: '200 kt (推估)', yieldKt: 200, range: '1,500 km', platform: '海豚級 (Dolphin-class) 柴電潛艦 650mm 魚雷管發射' },
+          { name: '戰術空投核重力炸彈', category: 'bomber', asset: 'gravity_bomb', yieldText: '10 – 100 kt (可調)', yieldKt: 50, range: '戰機投擲', platform: 'F-15I 雷霆式 / F-16I 風暴式戰鬥轟炸機掛載' }
+        ]
+      },
+      {
+        id: 'KP',
+        name: '北韓',
+        en: 'DEMOCRATIC PEOPLE’S REPUBLIC OF KOREA',
+        stockpile: '~60',
+        total: '~60（裂變材料或可造 ≥90 枚）',
+        deployed: '0 (平時分離儲存)',
+        triadStatus: '陸基為主 / 海基追趕',
+        triad: [
+          { domain: '陸基 (ICBM)', active: true, desc: '火星-15、火星-17、火星-18/19 洲際彈道飛彈' },
+          { domain: '海基 (SSBN)', active: false, desc: '新浦級與金君玉英雄號潛艦測試北極星潛射飛彈（驗證中）' },
+          { domain: '空基 (BOMBER)', active: false, desc: '無現代化戰略轟炸機，不具備空基投射能力' }
+        ],
+        summary: '唯一退出《不擴散核武器條約》並持續試射的國家。近年公開標準化小型彈頭「火山-31」，朝向多彈種通用化與洲際打擊能力快速推進。',
+        weapons: [
+          { name: '火星-18 / 火星-19 洲際飛彈', category: 'icbm', asset: 'icbm', yieldText: '不明（多為低當量裂變彈頭，少數為熱核）', yieldKt: 200, range: '15,000 km', platform: '固體燃料重型機動發射車（射程理論可覆蓋美國本土；尚無公開證據顯示已有可由洲際飛彈投射的實用彈頭）' },
+          { name: '火山-31 (Hwasan-31) 戰術核彈頭', category: 'icbm', asset: 'gravity_bomb', yieldText: '10 – 20 kt', yieldKt: 15, range: '350 – 800 km', platform: '標準化小型彈頭，通用於 KN-23 短程飛彈與巡弋飛彈' },
+          { name: '北極星潛射飛彈 / 海嘯核魚雷', category: 'slbm', asset: 'uuv', yieldText: '10 – 20 kt (推估)', yieldKt: 15, range: '近海至中程', platform: '金君玉英雄號戰術核攻擊潛艦與「海嘯」無人潛航器' }
+        ]
+      }
+    ];
+
+    // 狀態管理
+    let currentCountryId = 'RU';
+    let currentFilter = 'all';
+
+    // 初始化國家選擇器
+    function renderCountrySelector() {
+      const container = document.getElementById('country-selector');
+      container.innerHTML = NUCLEAR_DATA.map(c => `
+        <button onclick="selectCountry('${c.id}')" id="btn-${c.id}"
+          class="country-btn ${c.id === currentCountryId ? 'active' : ''} bg-[#FFFFFF] border border-[#C6D5E5] hover:border-[#0A84A6]/60 p-2.5 rounded text-left transition-all flex flex-col justify-between gap-2">
+          <div class="flex items-center justify-between gap-1.5">
+            <div class="w-7 h-5 rounded-xs overflow-hidden border border-white/15 shrink-0">${FLAGS[c.id]}</div>
+            <span class="font-mono-tech text-[11px] text-[#4F647A]">${c.id}</span>
+          </div>
+          <div>
+            <div class="text-xs font-bold text-slate-900 truncate">${c.name}</div>
+            <div class="font-mono-tech text-xs text-[#0A84A6] font-semibold">${c.stockpile}</div>
+          </div>
+        </button>
+      `).join('');
+    }
+
+    // 切換國家儀表板
+    function selectCountry(id) {
+      currentCountryId = id;
+      document.querySelectorAll('.country-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(`btn-${id}`)?.classList.add('active');
+
+      const data = NUCLEAR_DATA.find(c => c.id === id);
+      if (!data) return;
+
+      document.getElementById('detail-flag').innerHTML = FLAGS[data.id];
+      document.getElementById('detail-name').textContent = data.name;
+      document.getElementById('detail-code').textContent = data.id;
+      document.getElementById('detail-en').textContent = data.en;
+      document.getElementById('stat-stockpile').textContent = data.stockpile;
+      document.getElementById('stat-total').textContent = data.total;
+      document.getElementById('stat-deployed').textContent = data.deployed;
+      document.getElementById('triad-badge').textContent = data.triadStatus;
+      document.getElementById('detail-summary').textContent = data.summary;
+
+      // 渲染三位一體燈號
+      document.getElementById('triad-matrix').innerHTML = data.triad.map(t => `
+        <div class="bg-[#F2F6FB] border ${t.active ? 'border-[#0A84A6]/35' : 'border-[#C6D5E5] opacity-55'} p-2.5 rounded flex items-start gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full mt-1 shrink-0 ${t.active ? 'bg-[#0A84A6] shadow-[0_0_8px_#0A84A6]' : 'bg-[#B7C8DA]'}"></span>
+          <div>
+            <div class="text-xs font-bold font-mono-tech ${t.active ? 'text-slate-900' : 'text-[#4F647A]'}">${t.domain} — ${t.active ? '具備能力' : '無部署'}</div>
+            <p class="text-xs text-[#4F647A] mt-0.5">${t.desc}</p>
+          </div>
+        </div>
+      `).join('');
+
+      const cm = CMETA[id] || [];
+      document.getElementById('detail-meta').innerHTML = [`首次核試：${cm[0]}`, cm[1], cm[2]].map(t => `<span class="px-2 py-0.5 rounded border border-[#C6D5E5] bg-[#F2F6FB] text-[#2A394B]">${t}</span>`).join('');
+      document.querySelectorAll('.country-btn').forEach(b => b.setAttribute('aria-pressed', b.id === `btn-${id}` ? 'true' : 'false'));
+      history.replaceState(null, '', '#' + id);
+      renderWeaponsGrid(data);
+    }
+
+    // 渲染武器圖鑑卡片（使用 3D 戰術模型圖片）
+    function renderWeaponsGrid(countryData) {
+      const grid = document.getElementById('weapons-grid');
+      const filtered = currentFilter === 'all' 
+        ? countryData.weapons 
+        : countryData.weapons.filter(w => w.category === currentFilter);
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="col-span-full py-12 text-center text-xs text-[#4F647A] font-mono-tech border border-dashed border-[#C6D5E5] rounded">該國目前無此類別核載具部署記錄</div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map((w) => {
+        const hiroshimaRatio = (w.yieldKt / 15).toFixed(1);
+        const barPercent = Math.min(100, Math.max(8, (Math.log10(w.yieldKt + 1) / Math.log10(5000)) * 100));
+        const isHighYield = w.yieldKt >= 300;
+        const assetInfo = WEAPON_ASSETS[w.asset] || WEAPON_ASSETS.icbm;
+
+        return `
+          <div class="weapon-card bg-[#F2F6FB] border border-[#C6D5E5] hover:border-[#0A84A6]/60 p-4 rounded flex flex-col justify-between transition-all group">
+            <div>
+              <div class="flex items-start gap-3.5">
+                <div class="tactical-img-box w-20 h-20 rounded shrink-0 flex items-center justify-center p-1">
+                  <img src="${assetInfo.src}" alt="${w.name}（示意圖）" class="tactical-img" loading="lazy" width="80" height="80"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                  <div style="display:none;" class="w-full h-full flex-col items-center justify-center text-[11px] font-mono-tech text-[#0A84A6] text-center"><span class="text-lg">☢</span></div>
+                  <span class="absolute bottom-0 right-0 px-1 text-[10px] bg-black/70 text-slate-300">示意圖</span>
+                </div>
+
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center justify-between gap-1">
+                    <span class="text-[11px] font-mono-tech px-1.5 py-0.5 rounded bg-[#E6EEF6] text-[#0A84A6] border border-[#C6D5E5]">${w.type || assetInfo.label}</span>
+                    <span class="text-[11px] font-mono-tech text-[#4F647A]">射程 ${w.range}</span>
+                  </div>
+                  <h4 class="text-sm font-bold text-slate-900 mt-1.5 group-hover:text-[#0A84A6] transition-colors">${w.name}</h4>
+                  <p class="text-xs text-[#4F647A] mt-1 leading-relaxed">${w.platform}</p>
+                  ${w.status ? `<div class="mt-1.5 flex flex-wrap gap-1 text-[11px] font-mono-tech"><span class="px-1.5 py-0.5 rounded border ${ST[w.status][1]}">${ST[w.status][0]}</span><span class="px-1.5 py-0.5 rounded border border-[#C6D5E5] text-[#4F647A]">${w.conf === 'off' ? '數據較可靠' : '推估值'}</span></div>` : ''}
+                </div>
+              </div>
+
+              <!-- 威力當量視覺化比例尺 -->
+              <div class="mt-3.5 pt-3 border-t border-[#DBE5F0]">
+                <div class="flex justify-between items-center text-xs font-mono-tech mb-1">
+                  <span class="text-[#4F647A]">當量: <strong class="${isHighYield ? 'text-[#E04400]' : 'text-slate-900'}">${w.yieldText}</strong></span>
+                  <span class="text-[#B45309]">≈ ${hiroshimaRatio}x 廣島</span>
+                </div>
+                <div class="w-full h-1.5 bg-[#E6EEF6] rounded-full overflow-hidden">
+                  <div style="width: ${barPercent}%" class="h-full ${isHighYield ? 'bg-gradient-to-r from-[#F59E0B] to-[#E04400]' : 'bg-[#0A84A6]'}"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-3 flex justify-end gap-3 text-xs font-mono-tech">
+              ${['a', 'b'].map(t => `<button data-load="${t}" data-kt="${w.yieldKt}" data-name="${countryData.name} - ${w.name}" class="text-[#0A84A6] hover:text-slate-900 transition-colors">⚡ 代入 ${t.toUpperCase()}</button>`).join('')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // 載具篩選器事件
+    document.getElementById('type-filters').addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      currentFilter = btn.dataset.filter;
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('active', 'border-[#0A84A6]', 'bg-[#0A84A6]/20', 'text-slate-900');
+        b.classList.add('border-[#C6D5E5]', 'bg-[#F2F6FB]', 'text-[#4F647A]');
+      });
+      btn.classList.add('active', 'border-[#0A84A6]', 'bg-[#0A84A6]/20', 'text-slate-900');
+      btn.classList.remove('border-[#C6D5E5]', 'bg-[#F2F6FB]', 'text-[#4F647A]');
+
+      const data = NUCLEAR_DATA.find(c => c.id === currentCountryId);
+      if (data) renderWeaponsGrid(data);
+    });
+
+    // 4. 核爆當量對比模擬器 v2
+    const SIM_PRESETS = [
+      { g: '歷史基準', label: '廣島「小男孩」(15 kt)', kt: 15 },
+      { g: '歷史基準', label: '長崎「胖子」(約 21 kt)', kt: 21 },
+      { g: '歷史基準', label: '蘇聯「沙皇炸彈」實測 (50 Mt)', kt: 50000 },
+      { g: '各國彈頭', label: '巴基斯坦：納斯爾戰術核飛彈（推估 5 kt）', kt: 5 },
+      { g: '各國彈頭', label: '北韓：火山-31 戰術核彈頭（推估 15 kt）', kt: 15 },
+      { g: '各國彈頭', label: '印度：烈火-5 彈頭 (40 kt)', kt: 40 },
+      { g: '各國彈頭', label: '美國：B61-12 精準導引核炸彈 (50 kt)', kt: 50 },
+      { g: '各國彈頭', label: '英國：Holbrook 潛射彈頭 (100 kt)', kt: 100 },
+      { g: '各國彈頭', label: '法國：TNO 海洋潛射彈頭 (150 kt)', kt: 150 },
+      { g: '各國彈頭', label: '北韓：火星-18 彈頭（推估 200 kt，實用性未證實）', kt: 200 },
+      { g: '各國彈頭', label: '中國：DF-41 單枚彈頭（推估 250 kt）', kt: 250 },
+      { g: '各國彈頭', label: '美國：W88 潛射主力熱核彈頭 (475 kt)', kt: 475 },
+      { g: '各國彈頭', label: '俄羅斯：RS-28 薩爾馬特單枚彈頭（設計值 750 kt，研發中）', kt: 750 },
+      { g: '各國彈頭', label: '美國：B83-1 戰略重力核炸彈 (1.2 Mt，除役中)', kt: 1200 },
+      { g: '各國彈頭', label: '俄羅斯：波塞冬核動力魚雷（宣稱 2.0 Mt，研發中）', kt: 2000 },
+      { g: '各國彈頭', label: '中國：DF-5 系列（推估 4.0 Mt）', kt: 4000 }
+    ];
+    // 效應半徑（km），Y 為 kt；由外到內排列。係數依公開 NUKEMAP 輸出（100 kt、3.8 Mt 最佳爆高空爆）校正
+    const FX = [
+      { k: 'p1', n: '1 psi 玻璃破碎', d: '窗戶破裂、輕微傷害，範圍最廣。', f: y => 1.98 * Math.cbrt(y), sw: 1.2, da: '1.5 3', fo: 0.05 },
+      { k: 'th', n: '三度灼傷', d: '暴露皮膚嚴重燒傷，受能見度與天候影響大。', f: y => 0.559 * Math.pow(y, 0.447), sw: 1.5, da: '5 3', fo: 0.07 },
+      { k: 'p5', n: '5 psi 建築倒塌', d: '多數住宅倒塌，常用作中度破壞基準。', f: y => 0.70 * Math.cbrt(y), sw: 1.6, da: '', fo: 0.12 },
+      { k: 'p20', n: '20 psi 重度摧毀', d: '堅固混凝土建築嚴重損毀或倒塌。', f: y => 0.282 * Math.cbrt(y), sw: 2.2, da: '', fo: 0.2 },
+      { k: 'fire', n: '火球', d: '火球範圍內一切物質瞬間氣化。', f: y => 0.0602 * Math.pow(y, 0.4), sw: 1.5, da: '', fo: 0.45 }
+    ];
+    // 地爆概估係數（相對最佳爆高空爆）：衝擊波半徑縮小、熱輻射受地形遮蔽；火球視為相同。僅為概估
+    const BURST_MOD = { air: { p1: 1, th: 1, p5: 1, p20: 1, fire: 1 }, gnd: { p1: 0.85, th: 0.7, p5: 0.75, p20: 0.65, fire: 1 } };
+    const SIM_COL = { a: '#0A84A6', b: '#E04400' };
+    const HIRO_P5 = FX[2].f(15);
+    const iW88 = SIM_PRESETS.findIndex(p => p.label.includes('W88'));
+    const sim = { a: { sel: '0', kt: SIM_PRESETS[0].kt, label: '' }, b: { sel: String(iW88), kt: SIM_PRESETS[iW88].kt, label: '' }, on: { p1: true, th: true, p5: true, p20: true, fire: true }, sqrt: false, ref: true, burst: 'air' };
+    const fmtKt = (k) => k >= 1000 ? `${+(k / 1000).toFixed(k >= 10000 ? 0 : 2)} Mt` : `${+k.toFixed(k < 10 ? 1 : 0)} kt`;
+    const fmtLen = (r) => r < 1 ? `${Math.round(r * 1000)} m` : `${r.toFixed(r < 10 ? 2 : 1)} km`;
+    const fmtArea = (a) => a < 10 ? a.toFixed(2) : a < 100 ? a.toFixed(1) : Math.round(a).toLocaleString('en-US');
+    const fmtR = (x) => x >= 100 ? Math.round(x).toLocaleString('en-US') : x.toFixed(1);
+    const simCard = (s, title) => `<div class="bg-[#F2F6FB] border p-4 rounded" style="border-color:${SIM_COL[s]}66">
+      <div class="flex justify-between items-center mb-2"><label for="sim-select-${s}" class="text-xs font-bold font-mono-tech" style="color:${SIM_COL[s]}">${title}</label><span id="sim-hiro-${s}" class="text-xs font-mono-tech" style="color:${SIM_COL[s]}"></span></div>
+      <select id="sim-select-${s}" class="w-full bg-[#E6EEF6] border border-[#C6D5E5] text-slate-900 text-sm rounded px-3 py-2 focus:outline-none"></select>
+      <div class="mt-3 flex items-center gap-3"><input id="sim-slider-${s}" type="range" min="0" max="1000" step="1" aria-label="${title} 自訂當量" class="flex-1" style="accent-color:${SIM_COL[s]}"><span id="sim-kt-${s}" class="font-mono-tech text-sm font-bold text-slate-900 w-24 text-right"></span></div></div>`;
+    const kt2v = (kt) => Math.round((Math.log10(kt) + 1) / 6 * 1000);
+    function applySide(s, fromSlider) {
+      const st = sim[s], sel = document.getElementById('sim-select-' + s);
+      sel.options[sel.options.length - 1].text = st.label || '自訂當量';
+      sel.value = st.sel;
+      if (!fromSlider) document.getElementById('sim-slider-' + s).value = kt2v(st.kt);
+      document.getElementById('sim-kt-' + s).textContent = fmtKt(st.kt);
+      document.getElementById('sim-hiro-' + s).textContent = `${(st.kt / 15).toFixed(st.kt / 15 < 10 ? 2 : 1)}× 廣島`;
+    }
+    function renderSim() {
+      const A = sim.a.kt, B = sim.b.kt, rA = {}, rB = {};
+      const bm = BURST_MOD[sim.burst]; FX.forEach(f => { rA[f.k] = f.f(A) * bm[f.k]; rB[f.k] = f.f(B) * bm[f.k]; });
+      const vis = FX.filter(f => sim.on[f.k]), use = vis.length ? vis : FX;
+      let rmax = Math.max(...use.flatMap(f => [rA[f.k], rB[f.k]]));
+      if (sim.ref) rmax = Math.max(rmax, HIRO_P5);
+      const top = rmax * 1.08, R = 180, px = (r) => sim.sqrt ? R * Math.sqrt(r / top) : R * r / top;
+      let clamped = false;
+      ['a', 'b'].forEach(s => FX.forEach(f => {
+        const el = document.getElementById(`r-${s}-${f.k}`), r = (s === 'a' ? rA : rB)[f.k], min = f.k === 'fire' ? 2 : 3;
+        let v = px(r); if (v < min) { v = min; if (sim.on[f.k]) clamped = true; }
+        el.setAttribute('r', v); el.style.r = v + 'px'; el.style.display = sim.on[f.k] ? '' : 'none';
+      }));
+      const ref = document.getElementById('ref-ring'); ref.setAttribute('r', px(HIRO_P5)); ref.style.r = px(HIRO_P5) + 'px'; ref.style.display = sim.ref ? '' : 'none';
+      [0.25, 0.5, 0.75, 1].forEach((fr, i) => { document.getElementById('ring-l' + (i + 1)).textContent = fmtLen(sim.sqrt ? top * fr * fr : top * fr); });
+      window.update3D && window.update3D(rA, rB, px, top);
+      document.getElementById('radar-scale-label').textContent = `MAX ${fmtLen(top)}`;
+      document.getElementById('radar-mode-label').textContent = sim.sqrt ? '平方根縮放：圓圈間距不代表等比例距離' : '';
+      document.getElementById('radar-note').textContent = clamped ? '※ 過小的圓圈已放大以便辨識' : '';
+      // 對比說明
+      const yr = B / A, k = Math.max(yr, 1 / yr), big = yr >= 1 ? 'B' : 'A', sm = yr >= 1 ? 'A' : 'B';
+      const q = (key) => Math.max(rB[key] / rA[key], rA[key] / rB[key]);
+      document.getElementById('sim-insight').innerHTML = LANG === 'en' ? (Math.abs(yr - 1) < 1e-9 ? 'Both warheads have the same yield, so the effect ranges are identical.' : `<b class="text-slate-900">${big}</b> has <b class="text-[#B45309]">${fmtR(k)}×</b> the yield of <b class="text-slate-900">${sm}</b>, but its 5 psi radius is only <b class="text-[#B45309]">${fmtR(q('p5'))}×</b> larger (about ${fmtR(q('p5') ** 2)}× the affected area) and its third-degree burn radius about ${fmtR(q('th'))}×. Effects do not grow in proportion to yield.`) : Math.abs(yr - 1) < 1e-9 ? '兩枚彈頭當量相同，效應範圍一致。'
+        : `<b class="text-slate-900">${big}</b> 的當量是 <b class="text-slate-900">${sm}</b> 的 <b class="text-[#B45309]">${fmtR(k)}</b> 倍，但 5 psi 半徑只有 <b class="text-[#B45309]">${fmtR(q('p5'))}</b> 倍（受影響面積約 ${fmtR(q('p5') ** 2)} 倍）、三度灼傷半徑約 ${fmtR(q('th'))} 倍。當量變大時，影響範圍不會等比例擴大。`;
+      const bn = document.getElementById('burst-note');
+      bn.classList.toggle('hidden', sim.burst !== 'gnd');
+      bn.textContent = LANG === 'en' ? 'Surface burst: blast and thermal radii shrink (factors are rough estimates), but heavy radioactive fallout is produced. The fallout zone is NOT shown and can extend far beyond these circles.' : '地爆：衝擊波與熱輻射半徑縮小（係數為概估），但會產生大量放射性落塵；落塵範圍未顯示於圖中，可能遠大於圖示範圍。';
+      saveState();
+      // 對照表
+      const cell = (r, mx, s) => `<td class="py-2 pr-3 w-[27%]"><div class="text-slate-900 font-bold">${fmtLen(r)}</div><div class="text-[#4F647A]">${fmtArea(Math.PI * r * r)} km²</div><div class="h-1 mt-1 bg-[#E6EEF6] rounded"><div class="h-1 rounded" style="width:${Math.max(2, r / mx * 100)}%;background:${SIM_COL[s]}"></div></div></td>`;
+      document.getElementById('sim-table').innerHTML = `<thead><tr class="text-left"><th class="pb-1.5 pr-3 text-[#4F647A]">效應</th><th class="pb-1.5 pr-3" style="color:${SIM_COL.a}">A：${fmtKt(A)}（半徑／面積）</th><th class="pb-1.5" style="color:${SIM_COL.b}">B：${fmtKt(B)}（半徑／面積）</th></tr></thead><tbody>` +
+        [...FX].reverse().map(f => { const mx = Math.max(rA[f.k], rB[f.k]); return `<tr class="border-t border-[#DBE5F0]"><td class="py-2 pr-3"><div class="font-bold text-slate-900">${f.n}</div><div class="text-[#4F647A] font-sans leading-snug">${f.d}</div></td>${cell(rA[f.k], mx, 'a')}${cell(rB[f.k], mx, 'b')}</tr>`; }).join('') + '</tbody>';
+    }
+    function drawSimToggles() {
+      document.getElementById('sim-layers').innerHTML = FX.map(f => `<button data-fx="${f.k}" aria-pressed="${sim.on[f.k]}" class="px-2.5 py-1 rounded border flex items-center gap-1.5 ${sim.on[f.k] ? 'border-[#0A84A6] bg-[#0A84A6]/15 text-slate-900' : 'border-[#C6D5E5] bg-[#F2F6FB] text-[#4F647A]'}"><i class="inline-block w-4" style="border-top:2px ${f.da ? (f.da.startsWith('1.5') ? 'dotted' : 'dashed') : 'solid'} currentColor"></i>${f.n}</button>`).join('');
+      const t = (id, on, text) => { const b = document.getElementById(id); b.textContent = text; b.setAttribute('aria-pressed', on); b.className = 'px-2.5 py-1 rounded border ' + (on ? 'border-[#0A84A6] bg-[#0A84A6]/15 text-slate-900' : 'border-[#C6D5E5] bg-[#F2F6FB] text-[#4F647A]'); };
+      t('sim-ref', sim.ref, '廣島基準圈'); t('sim-burst', sim.burst === 'gnd', sim.burst === 'gnd' ? '爆高：地爆（地表爆炸）' : '爆高：最佳空爆'); t('sim-scale', sim.sqrt, '平方根縮放（同時看清小與大當量）');
+    }
+    function loadIntoSimulator(name, kt, side) {
+      sim[side] = { sel: 'custom', kt, label: `${name} (${fmtKt(kt)})` };
+      applySide(side); renderSim();
+      document.getElementById('simulator-section').scrollIntoView({ behavior: 'smooth' });
+    }
+    // 網址分享：把模擬器狀態寫進 ?a=&b=&h=&off=&ref=&sq=（保留 #國家 與 lang）
+    function saveState() {
+      try {
+        const p = new URLSearchParams(location.search), r = (k) => +k.toPrecision(4);
+        p.set('a', r(sim.a.kt)); p.set('b', r(sim.b.kt)); p.set('h', sim.burst);
+        const off = FX.filter(f => !sim.on[f.k]).map(f => f.k).join(',');
+        off ? p.set('off', off) : p.delete('off'); sim.ref ? p.delete('ref') : p.set('ref', '0'); sim.sqrt ? p.set('sq', '1') : p.delete('sq');
+        history.replaceState(null, '', location.pathname + '?' + p.toString() + location.hash);
+      } catch (e) {}
+    }
+    function loadState() {
+      try {
+        const p = new URLSearchParams(location.search), num = (k) => { const v = parseFloat(p.get(k)); return isFinite(v) ? Math.min(1e5, Math.max(0.1, v)) : null; };
+        ['a', 'b'].forEach(s => { const v = num(s); if (v) sim[s] = { sel: 'custom', kt: v, label: (LANG === 'en' ? 'Custom ' : '自訂 ') + fmtKt(v) }; });
+        if (p.get('h') === 'gnd') sim.burst = 'gnd';
+        (p.get('off') || '').split(',').forEach(k => { if (k in sim.on) sim.on[k] = false; });
+        if (p.get('ref') === '0') sim.ref = false; if (p.get('sq') === '1') sim.sqrt = true;
+      } catch (e) {}
+    }
+    function initSimulator() {
+      document.getElementById('sim-card-a').innerHTML = simCard('a', 'TARGET A // 基準彈頭（青）');
+      document.getElementById('sim-card-b').innerHTML = simCard('b', 'TARGET B // 對比彈頭（橘）');
+      const opts = ['歷史基準', '各國彈頭'].map(g => `<optgroup label="${g}">${SIM_PRESETS.map((p, i) => p.g === g ? `<option value="${i}">${p.label}</option>` : '').join('')}</optgroup>`).join('') + '<option value="custom">自訂當量</option>';
+      ['a', 'b'].forEach(s => {
+        document.getElementById('sim-select-' + s).innerHTML = opts;
+        document.getElementById('rings-' + s).innerHTML = FX.map(f => `<circle id="r-${s}-${f.k}" class="ring" cx="200" cy="200" r="0" fill="${SIM_COL[s]}" fill-opacity="${f.fo}" stroke="${f.k === 'fire' ? '#7C2D12' : SIM_COL[s]}" stroke-width="${f.sw}" ${f.da ? `stroke-dasharray="${f.da}"` : ''}/>`).join('');
+        document.getElementById('sim-select-' + s).addEventListener('change', (e) => { if (e.target.value === 'custom') return; sim[s] = { sel: e.target.value, kt: SIM_PRESETS[+e.target.value].kt, label: '' }; applySide(s); renderSim(); });
+        document.getElementById('sim-slider-' + s).addEventListener('input', (e) => { sim[s] = { sel: 'custom', kt: Math.pow(10, -1 + 6 * e.target.value / 1000), label: '自訂當量' }; applySide(s, true); renderSim(); });
+        applySide(s);
+      });
+      document.getElementById('sim-layers').addEventListener('click', (e) => { const b = e.target.closest('[data-fx]'); if (!b) return; sim.on[b.dataset.fx] = !sim.on[b.dataset.fx]; drawSimToggles(); renderSim(); });
+      document.getElementById('sim-ref').addEventListener('click', () => { sim.ref = !sim.ref; drawSimToggles(); renderSim(); });
+      document.getElementById('sim-scale').addEventListener('click', () => { sim.sqrt = !sim.sqrt; drawSimToggles(); renderSim(); });
+      document.getElementById('sim-burst').addEventListener('click', () => { sim.burst = sim.burst === 'air' ? 'gnd' : 'air'; drawSimToggles(); renderSim(); });
+      document.getElementById('sim-share').addEventListener('click', async (e) => {
+        saveState(); const b = e.currentTarget, old = b.textContent, url = location.href;
+        try { await navigator.clipboard.writeText(url); } catch (err) { const ta = document.createElement('textarea'); ta.value = url; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e2) {} ta.remove(); }
+        b.textContent = LANG === 'en' ? '✓ Link copied' : '✓ 已複製連結'; setTimeout(() => { b.textContent = old; }, 1800);
+      });
+      document.getElementById('sim-swap').addEventListener('click', () => { [sim.a, sim.b] = [sim.b, sim.a]; applySide('a'); applySide('b'); renderSim(); });
+      document.getElementById('sim-reset').addEventListener('click', () => { sim.a = { sel: '0', kt: SIM_PRESETS[0].kt, label: '' }; sim.b = { sel: String(iW88), kt: SIM_PRESETS[iW88].kt, label: '' }; sim.burst = 'air'; drawSimToggles(); applySide('a'); applySide('b'); renderSim(); });
+      loadState(); ['a', 'b'].forEach(applySide); drawSimToggles(); renderSim();
+    }
+
+    /* ★ 每次更新網站請修改這兩行 ★ */
+    const SITE_VERSION = 'v1.2.0';
+    const SITE_UPDATED = '2026-11-20';
+    const SPONSOR_AD_URL = 'https://uplcm.com/4/12128613';
+    document.querySelectorAll('.sponsor').forEach(a => (a.href = SPONSOR_AD_URL));
+    document.getElementById('closeAd')?.addEventListener('click', () => document.getElementById('bottomAd')?.remove());
+    document.getElementById('ver-chip').textContent = `🔖 ${SITE_VERSION}｜網站更新 ${SITE_UPDATED}`;
+    document.getElementById('ver-foot').textContent = `網站版本 ${SITE_VERSION}　｜　網站更新日期 ${SITE_UPDATED}　｜　數據基準 SIPRI 2026（2026.01）`;
+
+    // 武器補充欄位：類型 / 狀態 / 可信度
+    const ST = { ok: ['現役', 'text-[#0A84A6] border-[#0A84A6]/40'], dev: ['研發／測試中', 'text-[#B45309] border-[#B45309]/50'], ret: ['除役中', 'text-[#4F647A] border-[#475569]'] };
+    const META = [['RS-28','洲際彈道飛彈','dev','est'],['RS-24','洲際彈道飛彈','ok','off'],['RSM-56','潛射彈道飛彈','ok','off'],['Kh-102','空射巡弋飛彈','ok','est'],['波塞冬','核動力無人潛航器（魚雷）','dev','est'],['W88','彈頭（三叉戟 II）','ok','off'],['W76','彈頭（三叉戟 II）','ok','off'],['W78','彈頭（義勇兵 III）','ok','off'],['B61-12','重力炸彈','ok','off'],['B83','重力炸彈','ret','off'],['DF-5','洲際彈道飛彈','ok','est'],['DF-41','洲際彈道飛彈','ok','est'],['JL-3','潛射彈道飛彈','ok','est'],['轟-6N','空射彈道飛彈','ok','est'],['TNO','彈頭（M51 飛彈）','ok','off'],['TNA','彈頭（空射巡弋飛彈）','ok','est'],['Holbrook','彈頭（三叉戟 II）','ok','off'],['烈火-5','中遠程彈道飛彈','ok','est'],['K-15','潛射彈道飛彈','ok','est'],['空投戰術','重力炸彈','ok','est'],['沙欣-3','中程彈道飛彈','dev','est'],['納斯爾','短程戰術飛彈','ok','est'],['Raad','空射／潛射巡弋飛彈','ok','est'],['傑里科-3','中遠程彈道飛彈','ok','est'],['大力水手','潛射巡弋飛彈','ok','est'],['戰術空投','重力炸彈','ok','est'],['火星-18','洲際彈道飛彈','ok','est'],['火山-31','彈頭（短程飛彈用）','ok','est'],['北極星','潛射飛彈／核魚雷','dev','est']];
+    NUCLEAR_DATA.forEach(c => c.weapons.forEach(w => { const m = META.find(x => w.name.startsWith(x[0])); if (m) { w.type = m[1]; w.status = m[2]; w.conf = m[3]; } }));
+    // 各國：首次核試 / NPT 地位 / 核使用政策
+    const CMETA = { RU:[1949,'NPT 承認核武國','未宣示 NFU'], US:[1945,'NPT 承認核武國','未宣示 NFU'], CN:[1964,'NPT 承認核武國','宣示 NFU'], FR:[1960,'NPT 承認核武國','未宣示 NFU'], UK:[1952,'NPT 承認核武國','未宣示 NFU'], IN:[1974,'未加入 NPT','宣示 NFU（附條件）'], PK:[1998,'未加入 NPT','不排除率先使用'], IL:['無公開核試','未加入 NPT','核模糊政策'], KP:[2006,'2003 年宣布退出 NPT','未宣示 NFU'] };
+    // 庫存數字：[軍事庫存, 已部署, 總庫存]（SIPRI 2026）
+    const NUM = { RU:[4400,1796,5420], US:[3700,1770,5042], CN:[620,34,620], FR:[290,280,370], UK:[225,120,225], IN:[190,12,190], PK:[170,0,170], IL:[90,0,90], KP:[60,0,60] };
+    const sumN = (i, ids) => (ids || Object.keys(NUM)).reduce((a, k) => a + NUM[k][i], 0);
+    const fmtN = (n) => n.toLocaleString('en-US');
+    document.getElementById('hdr-stock').textContent = '~' + fmtN(sumN(0));
+    document.getElementById('hdr-total').textContent = '~' + fmtN(sumN(2));
+    (function renderStock() {
+      const T = sumN(2), oth = ['IN', 'PK', 'IL', 'KP'];
+      const g = [['RUS', '俄羅斯', ['RU'], '#FF3B30', 'text-white'], ['USA', '美國', ['US'], '#00A8FF', 'text-[#050A10]'], ['CHN', '中國', ['CN'], '#F59E0B', 'text-[#050A10]'], ['FRA', '法國', ['FR'], '#38BDF8', 'text-[#050A10]'], ['UK', '英國', ['UK'], '#818CF8', 'text-white'], ['OTHERS', '印度/巴基斯坦/以色列/北韓', oth, '#475569', 'text-white']]
+        .map(([code, name, ids, col, tc]) => ({ code, name, col, tc, n: sumN(2, ids), p: sumN(2, ids) / T * 100 }));
+      document.getElementById('stock-bar').innerHTML = g.map(x => `<div style="width:${x.p}%;background:${x.col}" class="${x.tc} flex items-center justify-center truncate px-0.5" title="${x.name} ~${fmtN(x.n)}">${x.p >= 4 ? x.code + ' ' + x.p.toFixed(1) + '%' : x.code}</div>`).join('');
+      document.getElementById('stock-legend').innerHTML = g.map(x => `<span class="flex items-center gap-1.5"><i class="w-2.5 h-2.5 inline-block" style="background:${x.col}"></i>${x.name} (~${fmtN(x.n)}｜${x.p.toFixed(1)}%)</span>`).join('');
+    })();
+
+    document.getElementById('weapons-grid').addEventListener('click', (e) => {
+      const b = e.target.closest('[data-load]'); if (!b) return;
+      loadIntoSimulator(b.dataset.name, parseFloat(b.dataset.kt), b.dataset.load);
+    });
+    renderCountrySelector();
+    const hashId = location.hash.slice(1);
+    selectCountry(NUCLEAR_DATA.some(c => c.id === hashId) ? hashId : 'RU');
+    initSimulator();
+  </script>
+<script>
+(function () {
+  const box = document.getElementById('sim3d-box'), b3 = document.getElementById('tab-3d'), b2 = document.getElementById('tab-2d'),
+        v3 = document.getElementById('view3d'), v2 = document.getElementById('view2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let ok = false, ren, scene, cam, raf = 0, O = { a: {}, b: {} }, lab = [], refRing, refT = 0, refC = 0;
+  const view = { az: 0.6, el: 0.85, d: 24, drag: false, x: 0, y: 0 };
+  const V0 = { ...view };
+
+  function setTab(t) {
+    const is3 = t === '3d' && ok;
+    v3.classList.toggle('hidden', !is3); v2.classList.toggle('hidden', is3);
+    [[b3, is3], [b2, !is3]].forEach(([b, on]) => { b.setAttribute('aria-pressed', on); b.className = 'px-2.5 py-1 rounded border ' + (on ? 'border-[#0A84A6] bg-[#0A84A6]/15 text-slate-900' : 'border-[#C6D5E5] bg-[#F2F6FB] text-[#4F647A]'); });
+    cancelAnimationFrame(raf);
+    if (is3) { resize(); frame(); }
+  }
+  function resize() { if (!ok) return; const w = box.clientWidth, h = box.clientHeight; if (!w || !h) return; ren.setSize(w, h); cam.aspect = w / h; cam.updateProjectionMatrix(); }
+  function placeCam() {
+    const c = Math.cos(view.el);
+    cam.position.set(view.d * Math.sin(view.az) * c, view.d * Math.sin(view.el), view.d * Math.cos(view.az) * c); cam.lookAt(0, 0, 0);
+  }
+  function frame() {
+    raf = requestAnimationFrame(frame);
+    if (!view.drag && !reduce) view.az += 0.0018;
+    placeCam();
+    const k = reduce ? 1 : 0.14;
+    ['a', 'b'].forEach(s => FX.forEach(f => {
+      const o = O[s][f.k]; o.c += (o.t - o.c) * k;
+      o.d.scale.set(o.c, 1, o.c); o.e.scale.set(o.c, 1, o.c); if (o.h) o.h.scale.set(o.c, o.c, o.c);
+    }));
+    refC += (refT - refC) * k; refRing.scale.set(refC, 1, refC);
+    ren.render(scene, cam);
+  }
+  function setLab(i, txt) { const { c, tx } = lab[i], g = c.getContext('2d'); g.clearRect(0, 0, 256, 64); g.font = 'bold 28px monospace'; g.fillStyle = '#5B7086'; g.textAlign = 'center'; g.fillText(txt, 128, 40); tx.needsUpdate = true; }
+
+  window.update3D = function (rA, rB, px, top) {
+    if (!ok) return;
+    ['a', 'b'].forEach(s => FX.forEach(f => {
+      const o = O[s][f.k], r = (s === 'a' ? rA : rB)[f.k], on = sim.on[f.k];
+      o.t = Math.max(px(r) / 18, (f.k === 'fire' ? 2 : 3) / 18);
+      o.d.visible = o.e.visible = on; if (o.h) o.h.visible = on;
+    }));
+    refT = px(HIRO_P5) / 18; refRing.visible = sim.ref;
+    [0.25, 0.5, 0.75, 1].forEach((fr, i) => setLab(i, fmtLen(sim.sqrt ? top * fr * fr : top * fr)));
+  };
+
+  try {
+    const T = THREE;
+    scene = new T.Scene(); scene.fog = new T.Fog(0xEAF1F8, 22, 52);
+    cam = new T.PerspectiveCamera(40, 1, 0.1, 120);
+    ren = new T.WebGLRenderer({ antialias: true, alpha: true }); ren.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+    box.appendChild(ren.domElement); ren.domElement.style.touchAction = 'none';
+    scene.add(new T.GridHelper(28, 28, 0xB5C6D8, 0xD9E4EF));
+    const pts = []; for (let i = 0; i < 96; i++) { const a = i / 96 * Math.PI * 2; pts.push(new T.Vector3(Math.cos(a), 0, Math.sin(a))); }
+    const cg = new T.BufferGeometry().setFromPoints(pts), disc = new T.CircleGeometry(1, 96).rotateX(-Math.PI / 2),
+          dome = new T.SphereGeometry(1, 40, 20, 0, Math.PI * 2, 0, Math.PI / 2);
+    // 地面刻度圈與標籤
+    lab = [0.25, 0.5, 0.75, 1].map(fr => {
+      const c = document.createElement('canvas'); c.width = 256; c.height = 64; const tx = new T.CanvasTexture(c);
+      const sp = new T.Sprite(new T.SpriteMaterial({ map: tx, transparent: true, depthWrite: false })); sp.scale.set(2.6, 0.65, 1); sp.position.set(10 * fr + 0.2, 0.2, 0.9); scene.add(sp);
+      const r = new T.LineLoop(cg, new T.LineBasicMaterial({ color: 0x7F97B0, transparent: true, opacity: 0.8 })); r.scale.set(10 * fr, 1, 10 * fr); r.position.y = 0.005; scene.add(r);
+      return { c, tx };
+    });
+    refRing = new T.LineLoop(cg, new T.LineBasicMaterial({ color: 0x475569, transparent: true, opacity: 0.7 })); refRing.position.y = 0.09; scene.add(refRing);
+    ['a', 'b'].forEach((s, si) => FX.forEach((f, i) => {
+      const col = new T.Color(SIM_COL[s]), y = 0.02 + i * 0.015 + si * 0.007;
+      const d = new T.Mesh(disc, new T.MeshBasicMaterial({ color: col, transparent: true, opacity: Math.min(0.6, f.fo * 2), depthWrite: false, side: T.DoubleSide }));
+      const e = new T.LineLoop(cg, new T.LineBasicMaterial({ color: f.k === 'fire' ? 0x7C2D12 : col, transparent: true, opacity: 0.95 }));
+      d.position.y = e.position.y = y; d.renderOrder = i; scene.add(d, e);
+      let h = null;
+      if (f.k === 'fire' || f.k === 'p20') {
+        h = new T.Mesh(dome, new T.MeshBasicMaterial({ color: f.k === 'fire' ? 0xFF8A2A : col, transparent: true, opacity: f.k === 'fire' ? 0.55 : 0.2, wireframe: f.k === 'p20', depthWrite: false, blending: T.NormalBlending }));
+        scene.add(h);
+      }
+      O[s][f.k] = { d, e, h, c: 0, t: 0 };
+    }));
+    const gz = new T.Mesh(new T.SphereGeometry(0.09, 12, 12), new T.MeshBasicMaterial({ color: 0x0F1B2A })); gz.position.y = 0.1; scene.add(gz);
+
+    const el = ren.domElement;
+    el.addEventListener('pointerdown', e => { view.drag = true; view.x = e.clientX; view.y = e.clientY; el.setPointerCapture(e.pointerId); box.style.cursor = 'grabbing'; });
+    el.addEventListener('pointermove', e => { if (!view.drag) return; view.az -= (e.clientX - view.x) * 0.006; view.el = Math.min(1.45, Math.max(0.15, view.el + (e.clientY - view.y) * 0.006)); view.x = e.clientX; view.y = e.clientY; });
+    const end = () => { view.drag = false; box.style.cursor = ''; };
+    el.addEventListener('pointerup', end); el.addEventListener('pointercancel', end);
+    el.addEventListener('wheel', e => { e.preventDefault(); view.d = Math.min(42, Math.max(10, view.d * (1 + Math.sign(e.deltaY) * 0.08))); }, { passive: false });
+    el.addEventListener('dblclick', () => Object.assign(view, V0));
+    box.addEventListener('keydown', e => {
+      const m = { ArrowLeft: () => view.az -= 0.12, ArrowRight: () => view.az += 0.12, ArrowUp: () => view.el = Math.min(1.45, view.el + 0.08), ArrowDown: () => view.el = Math.max(0.15, view.el - 0.08), '+': () => view.d = Math.max(10, view.d - 2), '-': () => view.d = Math.min(42, view.d + 2) }[e.key];
+      if (m) { e.preventDefault(); m(); }
+    });
+    new ResizeObserver(resize).observe(box);
+    ok = true;
+  } catch (err) { ok = false; b3.style.display = 'none'; }
+
+  b3.addEventListener('click', () => setTab('3d')); b2.addEventListener('click', () => setTab('2d'));
+  renderSim(); setTab('3d');
+})();
+</script>
+<script>
+(function () {
+  const lb = document.getElementById('lang-btn');
+  lb.textContent = LANG === 'en' ? '中文' : 'EN';
+  lb.addEventListener('click', () => { const p = new URLSearchParams(location.search); p.set('lang', LANG === 'en' ? 'zh' : 'en'); location.search = p.toString(); });
+  document.documentElement.lang = LANG === 'en' ? 'en' : 'zh-Hant';
+  if (LANG !== 'en') return;
+const EN = {
+"全球核武庫資料庫｜九個擁核國家庫存、載具與當量對比（SIPRI 2026）":"Global Nuclear Arsenal Database | Stockpiles, Delivery Systems and Yields of the Nine Nuclear States (SIPRI 2026)",
+"依 SIPRI Yearbook 2026（2026 年 1 月估計）整理九個擁核國家的核彈頭庫存、核三位一體與載具，並提供當量與效應半徑對比模擬器。":"Warhead stockpiles, nuclear triads and delivery systems of the nine nuclear-armed states based on SIPRI Yearbook 2026 (January 2026 estimates), with a yield and effects-radius comparison simulator.",
+"全球核武庫資料庫（SIPRI 2026）":"Global Nuclear Arsenal Database (SIPRI 2026)",
+"九個擁核國家庫存、載具圖鑑與當量對比模擬器；數據為公開估計值。":"Stockpiles and delivery-system catalog for nine nuclear states, plus a yield comparison simulator. Figures are public estimates.",
+"數據截至":"Data as of",
+"全球擁核國家戰略威懾資料庫與當量對比模擬（公開估計值，僅供教育參考）":"Strategic deterrence database of nuclear-armed states with yield comparison simulation (public estimates, for educational reference only)",
+"擁核國家數":"Nuclear states","軍事庫存（可用）":"Military stockpile (usable)","彈頭":"warheads",
+"全球總庫存(含退役)":"Global total (incl. retired)","總庫存(含退役)":"Total (incl. retired)","戰備已部署":"Deployed (operational)",
+"美俄 New START 條約已於 2026 年 2 月到期，目前沒有雙邊限制，也不再有官方公布的部署數據；以下皆為研究機構估計值，不確定性高。":"The US–Russia New START treaty expired in February 2026. There are no bilateral limits now and no more official deployment figures; everything below is a research-institute estimate with high uncertainty.",
+"名詞說明：軍事庫存、已部署、退役有何不同？":"Terms: how do military stockpile, deployed and retired differ?",
+"已部署：":"Deployed:","已裝在飛彈上或位於作戰基地的彈頭。":"Warheads mounted on missiles or located at operational bases.",
+"軍事庫存：":"Military stockpile:","已部署＋集中儲存、稍作準備即可使用的彈頭。":"Deployed warheads plus those in central storage that can be readied quickly.",
+"總庫存：":"Total stockpile:","軍事庫存＋已退役但尚未拆解的彈頭。":"Military stockpile plus retired warheads not yet dismantled.",
+"單枚飛彈載多枚可分別瞄準的彈頭。":"A single missile carrying several independently targetable warheads.",
+"kt／Mt：":"kt / Mt: ","千噸／百萬噸 TNT 當量。":"Kilotons / megatons of TNT equivalent.",
+"全球總庫存佔比分析":"Share of global total stockpile","美俄兩國合計佔全球總核武庫約":"The US and Russia together hold about",
+"點選擁核國家檢視情報":"Select a nuclear state to view its profile",
+"數據來源：SIPRI Yearbook 2026（2026 年 1 月估計）":"Source: SIPRI Yearbook 2026 (January 2026 estimates)",
+"核三位一體投射能力":"Delivery capability","完整具備":"Complete","戰略態勢摘要":"Strategic posture summary",
+"現役主力核彈頭與投射載具圖鑑":"Active warheads and delivery systems catalog",
+"點擊下方載具分類篩選器，或直接將型號代入底部「威力模擬器」":"Filter by delivery type below, or load a model straight into the yield simulator at the bottom",
+"全部載具":"All systems","陸基飛彈":"Land-based","潛艦水下":"Submarine","空基投射":"Air-delivered",
+"核爆當量與效應半徑對比模擬器":"Nuclear Yield & Effects Radius Comparison Simulator",
+"選兩枚彈頭或拖曳自訂當量，對比火球、衝擊波與熱輻射的影響範圍（基準：廣島 15 kt；最佳爆高空爆）":"Pick two warheads or drag a custom yield to compare fireball, blast-wave and thermal-radiation ranges (baseline: Hiroshima 15 kt; optimal-height air burst)",
+"⇄ 對調 A／B":"⇄ Swap A / B","🔗 複製分享連結":"🔗 Copy share link","↺ 重設":"↺ Reset","顯示圖層":"Layers","3D 立體":"3D view","2D 雷達":"2D radar",
+"核爆效應半徑 3D 立體對比圖，可拖曳旋轉、滾輪縮放、方向鍵調整視角":"3D comparison of nuclear effect radii; drag to rotate, scroll to zoom, arrow keys to adjust the view",
+"拖曳旋轉・滾輪縮放・雙擊重設視角｜地面圓盤＝效應半徑，半球＝火球與 20 psi 範圍（示意）":"Drag to rotate · scroll to zoom · double-click to reset | Ground discs = effect radii, hemispheres = fireball and 20 psi range (illustrative)",
+"兩枚核彈頭效應半徑的同心圓對比圖":"Concentric-circle comparison of two warheads’ effect radii",
+"● 彈頭 A":"● Warhead A","● 彈頭 B":"● Warhead B","┄ 廣島 5 psi 基準圈":"┄ Hiroshima 5 psi reference ring",
+"⚠ 簡化模型：半徑依公開的 NUKEMAP 輸出校正並以立方根（衝擊波）與 0.447 次方（熱輻射）縮放，預設為最佳爆高空爆（可切換地爆概估）、晴天、平坦地形，僅為概估；實際效應受爆高、天候、地形與建物影響。半徑只呈現部分物理效應，輻射落塵、長期健康與環境影響遠超這些範圍。本工具刻意不提供城市標定或傷亡估算。":"⚠ Simplified model: radii are calibrated to public NUKEMAP output and scaled by the cube root (blast) and the 0.447 power (thermal radiation). It assumes an optimal-height air burst by default (surface burst can be toggled as a rough estimate), clear weather and flat terrain, so treat it as an approximation; real effects depend on burst height, weather, terrain and buildings. The radii show only some physical effects; fallout, long-term health and environmental impacts reach far beyond them. This tool deliberately offers no city targeting or casualty estimates.",
+"AD 贊助":"AD Sponsored","喜歡這個模擬器？點擊精選推薦，支持網站免費營運":"Like this simulator? Check out our picks and help keep the site free",
+"前往看看 ↗":"Visit ↗","前往看看":"Visit","推薦資源":"Recommended","國際安全與熱門精選內容推薦":"Featured picks on international security and trending topics",
+"本站由獨立開發者免費維護，點擊右側探索精選合作夥伴內容以支持網站持續營運。":"This site is maintained for free by an independent developer. Explore our partners’ picks on the right to help support it.",
+"立即前往探索 ↗":"Explore now ↗","全球核武庫資料庫 ｜ 版權所有":"Global Nuclear Arsenal Database | All rights reserved",
+"數據來源：":"Source: ","（第 8 章 World nuclear forces，2026 年 1 月估計）。各國核武數量與當量多為研究機構依公開資訊推估，存在相當不確定性，僅供教育與研究參考。載具圖片為示意圖，非實物照片。":" (Chapter 8, World nuclear forces, January 2026 estimates). Warhead counts and yields are mostly research-institute estimates from public information and carry considerable uncertainty; for educational and research reference only. Vehicle images are illustrations, not photographs.",
+"🔥 點擊查看熱門精選推薦｜支持全球核武庫資料庫免費營運":"🔥 See trending picks | Support the free Global Nuclear Arsenal Database","關閉廣告橫幅":"Close ad banner",
+"網站版本":"Site version","｜網站更新":" | Updated","　｜　網站更新日期":" | Last updated","　｜　數據基準 SIPRI 2026（2026.01）":" | Data baseline: SIPRI 2026 (2026.01)",
+"ICBM 洲際飛彈":"ICBM","SLBM 潛射飛彈":"SLBM","隱形戰略轟炸機":"Stealth strategic bomber","超音速轟炸機":"Supersonic bomber","核巡弋飛彈":"Nuclear cruise missile","戰術重力核彈":"Tactical gravity bomb","MIRV 多彈頭載具":"MIRV multi-warhead vehicle","核動力無人潛航器（魚雷）":"Nuclear-powered UUV (torpedo)","核動力無人潛航器":"Nuclear-powered UUV",
+"俄羅斯":"Russia","美國":"United States","中國":"China","法國":"France","英國":"United Kingdom","印度":"India","巴基斯坦":"Pakistan","以色列":"Israel","北韓":"North Korea","印度/巴基斯坦/以色列/北韓":"India/Pakistan/Israel/North Korea",
+"完整核三位一體":"Full nuclear triad","海空雙位一體":"Sea & air dyad","單一海基威懾":"Sea-based only","初具核三位一體":"Emerging triad","陸空為主 / 海基測試":"Land & air; sea-based testing","推估具備三位一體":"Estimated triad","陸基為主 / 海基追趕":"Mainly land-based; sea leg catching up",
+"陸基 (ICBM)":"Land (ICBM)","海基 (SSBN)":"Sea (SSBN)","空基 (BOMBER)":"Air (BOMBER)","具備能力":"Capable","無部署":"Not deployed",
+"324 具洲際飛彈發射器（亞爾斯、白楊-M、沃耶沃達；薩爾馬特尚未形成戰力）":"324 ICBM launchers (Yars, Topol-M, Voyevoda; Sarmat not yet operational)",
+"約 13 艘戰略核潛艦（北風之神級、德爾塔 IV 級）":"About 13 strategic submarines (Borei- and Delta IV-class)",
+"Tu-160 白天鵝與 Tu-95MS 戰略轟炸機隊":"Tu-160 “White Swan” and Tu-95MS strategic bomber fleet",
+"擁有全球最大規模核武庫，並保留約 1,800 枚非戰略（戰術）核彈頭。近年積極換裝「亞爾斯」機動飛彈與「北風之神」核潛艦；「薩爾馬特」重型飛彈與「波塞冬」核魚雷仍在研發測試階段。":"Holds the world’s largest nuclear arsenal, including about 1,800 non-strategic (tactical) warheads. It has been actively replacing older systems with Yars mobile missiles and Borei submarines; the Sarmat heavy missile and Poseidon nuclear torpedo are still in development and testing.",
+"薩爾馬特 (Sarmat)":"Sarmat","亞爾斯 (Yars)":"Yars","布拉瓦 (Bulava)":"Bulava","，設計值":", design value",
+"陸基重型井射洲際飛彈（研發嚴重延宕、試射多次失敗，尚未列入現役）":"Heavy silo-based ICBM (development badly delayed, multiple failed test launches; not yet in active service)",
+"250 kt (1–3 枚 MIRV)":"250 kt (1–3 MIRV warheads)","150 kt (4–6 枚 MIRV)":"150 kt (4–6 MIRV warheads)",
+"陸基公路機動 / 井射主力洲際彈道飛彈":"Road-mobile / silo-based main ICBM","北風之神級戰略核潛艦潛射彈道飛彈":"SLBM for Borei-class strategic submarines",
+"Kh-102 空射隱形巡弋飛彈":"Kh-102 air-launched stealth cruise missile","(可調當量)":"(variable yield)","可調當量":"variable yield","(可調)":"(variable)",
+"Tu-160 白天鵝 / Tu-95MS 戰略轟炸機掛載":"Carried by Tu-160 “White Swan” / Tu-95MS strategic bombers",
+"波塞冬 (Poseidon) 核魚雷":"Poseidon nuclear torpedo","(2 Mt 級)":"(~2 Mt class)",
+"核動力無人潛航器（2025 年宣稱試射；專用載艦「哈巴羅夫斯克號」尚未服役）":"Nuclear-powered unmanned submersible (test claimed in 2025; dedicated carrier “Khabarovsk” not yet in service)",
+"400 座地下發射井（義勇兵三型 Minuteman III）":"400 underground silos (Minuteman III)",
+"14 艘俄亥俄級戰略核潛艦（配備三叉戟 II D5）":"14 Ohio-class strategic submarines (armed with Trident II D5)",
+"B-2A 幽靈隱形轟炸機、B-52H 與北約戰術核共享機隊":"B-2A Spirit stealth bombers, B-52H and NATO nuclear-sharing aircraft",
+"核武庫高度標準化與現代化，約 55%（約 970 枚）的已部署彈頭配置於隱蔽性極高的俄亥俄級核潛艦上。另有約 100–120 枚 B61-12 戰術核彈部署於歐洲 6–7 座空軍基地（5–6 個北約國家）。":"A highly standardized and modernized arsenal; about 55% (roughly 970) of deployed warheads sit on the highly concealed Ohio-class submarines. Another 100–120 B61-12 tactical bombs are deployed at 6–7 air bases in Europe (5–6 NATO countries).",
+"W88 潛射熱核彈頭":"W88 SLBM thermonuclear warhead","俄亥俄級核潛艦 / 三叉戟 II D5 飛彈（主力高當量彈頭）":"Ohio-class submarines / Trident II D5 missile (main high-yield warhead)",
+"W76-1 / W76-2 潛射彈頭":"W76-1 / W76-2 SLBM warheads","(低當量)":"(low yield)",
+"三叉戟 II D5 飛彈（W76-1 約 1,500 枚為美軍數量最多）":"Trident II D5 missile (W76-1, about 1,500, is the most numerous in the US arsenal)",
+"W78 / W87 陸基洲際彈頭":"W78 / W87 ICBM warheads","義勇兵三型 (Minuteman III) 地下井射飛彈":"Minuteman III silo-launched missile",
+"B61-12 精準導引核炸彈":"B61-12 precision-guided nuclear bomb","戰機投擲":"Aircraft-delivered",
+"B-2A 隱形轟炸機、F-35A、F-15E 掛載之最新導引重力核彈":"Latest guided gravity bomb carried by B-2A stealth bombers, F-35A and F-15E",
+"B83-1 大型戰略重力核彈":"B83-1 large strategic gravity bomb","轟炸機投擲":"Bomber-delivered",
+"B-2A 掛載；SIPRI 認為已退出現役、除役中（新型 B61-13 高當量炸彈已開始生產）":"Carried by B-2A; SIPRI regards it as withdrawn from active service and being retired (the new high-yield B61-13 has entered production)",
+"奉行「不首先使用核武」政策，目前正處於核武庫快速現代化與擴張階段。平時多數彈頭與飛彈分離儲存，但部分新型陸基與海基單位已進入戰備值班。":"Follows a “no first use” policy and is in a phase of rapid arsenal modernization and expansion. Most warheads are stored separately from missiles in peacetime, but some new land- and sea-based units are on alert duty.",
+"DF-41、DF-31AG 機動發射車與北部新建三大發射井區（約 320 座 DF-31B 井）":"DF-41 and DF-31AG road-mobile launchers plus three new silo fields in the north (about 320 DF-31B silos)",
+"6 艘 094 型（晉級）核潛艦配備巨浪-3 飛彈":"6 Type 094 (Jin-class) submarines armed with JL-3 missiles",
+"轟-6N (H-6N) 戰略轟炸機掛載空射彈道飛彈":"H-6N strategic bombers carrying air-launched ballistic missiles",
+"DF-5A / DF-5B 洲際飛彈":"DF-5A / DF-5B ICBM","當量不公開（舊型為百萬噸級）":"Yield undisclosed (older type in the megaton class)",
+"井射液體洲際飛彈（DF-5B 具 MIRV，最多約 5 枚；當量為推估）":"Silo-launched liquid-fuel ICBM (DF-5B has MIRV, up to ~5 warheads; yield estimated)",
+"DF-41 東風-41 洲際飛彈":"DF-41 ICBM","當量不公開（推估數百 kt，最多約 3 枚 MIRV）":"Yield undisclosed (est. several hundred kt, up to ~3 MIRV warheads)",
+"公路機動 / 井射固體燃料飛彈（具備分導多彈頭能力）":"Road-mobile / silo-launched solid-fuel missile (MIRV capable)","JL-3 巨浪-3 潛射洲際飛彈":"JL-3 SLBM",
+"094 型核動力彈道飛彈潛艦（可自近海覆蓋北美目標）":"Type 094 nuclear ballistic-missile submarine (can cover North American targets from nearby seas)",
+"轟-6N 空射核彈道飛彈":"H-6N air-launched nuclear ballistic missile","轟-6N 轟炸機機腹半埋式掛載（補齊空基三位一體拼圖）":"Semi-recessed under the belly of the H-6N bomber (completing the air leg of the triad)",
+"(推估)":"(est.)","推估":"est.",
+"已於 1996 年主動全面裁撤所有陸基核飛彈":"All land-based nuclear missiles were deliberately and fully retired in 1996",
+"4 艘凱旋級戰略核潛艦（永遠保持至少 1 艘在深海巡弋）":"4 Triomphant-class strategic submarines (at least 1 always on deep-sea patrol)",
+"陣風戰機（含戴高樂號航母艦載機）掛載核巡弋飛彈":"Rafale fighters (including carrier-based aircraft on the Charles de Gaulle) carrying nuclear cruise missiles",
+"歐盟唯一擁核國，具備完全獨立的核武研發與生產體系。維持「嚴格足夠」原則，依靠高度隱蔽的凱旋級核潛艦與陣風戰機形成海空雙重威懾。2026 年 3 月宣布將增加彈頭並不再公布數量，並與英國簽署《諾斯伍德宣言》協調核威懾。":"The EU’s only nuclear state, with a fully independent nuclear development and production base. It keeps to a “strict sufficiency” principle, combining highly concealed Triomphant-class submarines and Rafale fighters for sea and air deterrence. In March 2026 it announced it would add warheads, stop publishing numbers, and coordinate nuclear deterrence with the UK under the Northwood Declaration.",
+"TNO 海洋核彈頭 (M51 飛彈)":"TNO oceanic warhead (M51 missile)","凱旋級戰略核潛艦 / M51.2 與 M51.3 潛射洲際飛彈":"Triomphant-class submarines / M51.2 and M51.3 SLBMs",
+"TNA 空射核彈頭 (ASMP-A)":"TNA air-launched warhead (ASMP-A)","≤300 kt（實際當量不明）":"≤300 kt (actual yield unknown)","約 500–600 km":"~500–600 km",
+"陣風戰鬥機 (Rafale) 掛載之超音速衝壓核巡弋飛彈":"Supersonic ramjet nuclear cruise missile carried by Rafale fighters",
+"無陸基核飛彈部隊":"No land-based nuclear missile forces","4 艘先鋒級核潛艦（全年 365 天不間斷海底威懾巡邏）":"4 Vanguard-class submarines (continuous at-sea deterrent patrols, 365 days a year)",
+"已於 1998 年退役所有空投核炸彈（2025 年宣布購買 12 架 F-35A，預計 2030 年代初重返北約核分享任務）":"All air-dropped nuclear bombs were retired in 1998 (in 2025 the UK announced the purchase of 12 F-35A aircraft, expected to rejoin the NATO nuclear-sharing mission in the early 2030s)",
+"全球唯一將 100% 核威懾力量集中於潛艦部隊的國家（連續海上威懾 CASD）。雖向美國租借三叉戟飛彈載具，但核彈頭完全由英國自主設計製造與控制。英國已不再公布彈頭數量，上限提高至 260 枚。":"The only country that concentrates 100% of its nuclear deterrent in its submarine force (Continuous At-Sea Deterrence, CASD). It leases Trident missiles from the US, but the warheads are entirely designed, built and controlled by the UK. The UK no longer publishes warhead numbers; its ceiling has been raised to 260.",
+"Holbrook 潛射熱核彈頭":"Holbrook SLBM thermonuclear warhead","100 kt（或有較低當量選項）":"100 kt (a lower-yield option may exist)","先鋒級 (Vanguard-class) 核潛艦 / 三叉戟 II D5 飛彈":"Vanguard-class submarines / Trident II D5 missile",
+"烈火系列 (Agni-I 至 Agni-V) 機動彈道飛彈":"Agni series (Agni-I to Agni-V) mobile ballistic missiles",
+"3 艘殲敵者級 (Arihant-class) 核動力彈道飛彈潛艦（Arihant、Arighaat、Aridhaman）":"3 Arihant-class nuclear ballistic-missile submarines (Arihant, Arighaat, Aridhaman)",
+"美洲虎與幻象 2000H 戰機投擲核重力炸彈":"Jaguar and Mirage 2000H aircraft delivering nuclear gravity bombs",
+"奉行「不首先使用核武」政策，傳統威懾重心針對巴基斯坦，但近年「烈火-5」中遠程飛彈與「殲敵者級」核潛艦服役後，已將戰略威懾範圍擴大至中國全境。":"Follows a “no first use” policy. Its traditional deterrence focus is Pakistan, but with the Agni-V intermediate/long-range missile and the Arihant-class submarines now in service, its strategic deterrence reaches all of China.",
+"烈火-5 (Agni-V) 中遠程彈道飛彈":"Agni-V intermediate/long-range ballistic missile","(測試 MIRV)":"(MIRV tested)",
+"筒裝公路機動中遠程飛彈（SIPRI 歸類為 IRBM，具 MIRV 能力，射程覆蓋中國全境）":"Canisterized road-mobile intermediate/long-range missile (SIPRI classifies it as an IRBM; MIRV capable; range covers all of China)",
+"K-15 / K-4 潛射彈道飛彈":"K-15 / K-4 SLBMs","殲敵者級 (INS Arihant) 核動力彈道飛彈潛艦":"Arihant-class (INS Arihant) nuclear ballistic-missile submarine",
+"空投戰術核重力炸彈":"Air-dropped tactical nuclear gravity bomb","美洲虎、幻象 2000H 戰鬥轟炸機掛載":"Carried by Jaguar and Mirage 2000H strike aircraft",
+"(分離儲存)":"(stored separately)","沙欣 (Shaheen)、高里與納斯爾戰術核飛彈":"Shaheen, Ghauri and Nasr tactical nuclear missiles",
+"無核潛艦，但已在柴電潛艦測試巴布爾-3 潛射核巡弋飛彈":"No nuclear submarines, but the Babur-3 sub-launched nuclear cruise missile has been tested from a diesel-electric submarine",
+"以幻象 III/V 戰機為主（JF-17 與 Raad 空射巡弋飛彈的核任務屬推估）":"Mainly Mirage III/V aircraft (nuclear roles for the JF-17 and the Raad air-launched cruise missile are estimated)",
+"為抗衡印度常規軍力優勢，採取「全譜系威懾」與「不排除率先使用」策略，特別發展射程僅 70 公里的低當量戰術核飛彈以阻止印軍裝甲部隊推進。":"To offset India’s conventional-force advantage, it adopts “full-spectrum deterrence” and does not rule out first use, and has developed a low-yield tactical nuclear missile with a range of only 70 km to stop advancing Indian armored forces.",
+"沙欣-3 / 阿巴比爾中程飛彈":"Shaheen-III / Ababeel medium-range missile",
+"公路機動中程彈道飛彈（覆蓋印度全境；Shaheen-III 尚未部署、Ababeel 尚未服役）":"Road-mobile medium-range ballistic missile (covers all of India; Shaheen-III not yet deployed, Ababeel not yet in service)",
+"納斯爾 (Nasr) 戰術核飛彈":"Nasr tactical nuclear missile","(極低當量)":"(very low yield)","多管機動發射車（專為戰場反裝甲作戰設計）":"Multi-tube mobile launcher (designed for battlefield anti-armor use)",
+"Raad / 巴布爾-3 核巡弋飛彈":"Raad / Babur-3 nuclear cruise missiles","JF-17 戰機空射（推估）；巴布爾-3 潛射型預計 2027 年前後":"Air-launched from JF-17 (estimated); the sub-launched Babur-3 is expected around 2027",
+"傑里科-2 與傑里科-3 遠程/洲際彈道飛彈（洞庫部署）":"Jericho II and Jericho III long-range / intercontinental ballistic missiles (cave-based deployment)",
+"德製海豚級柴電潛艦配備大力水手潛射核巡弋飛彈":"German-built Dolphin-class diesel-electric submarines armed with Popeye Turbo sub-launched nuclear cruise missiles",
+"F-15I 與 F-16I 戰鬥轟炸機投擲核重力炸彈":"F-15I and F-16I strike aircraft delivering nuclear gravity bombs",
+"官方長期奉行「既不承認也不否認」的核模糊政策。國際情報界普遍認定其擁有約 90 枚精密熱核彈頭，並透過海豚級潛艦確保中東地區的二次核打擊能力。":"Officially maintains a long-standing policy of nuclear ambiguity, neither confirming nor denying. The international intelligence community widely assesses that it holds about 90 sophisticated thermonuclear warheads, and it secures a second-strike capability in the Middle East through its Dolphin-class submarines.",
+"傑里科-3 (Jericho III) 洲際飛彈":"Jericho III ICBM","地下洞庫機動發射車（三級固體燃料彈道飛彈）":"Underground-cave mobile launcher (three-stage solid-fuel ballistic missile)",
+"大力水手 (Popeye Turbo) 潛射飛彈":"Popeye Turbo sub-launched missile","海豚級 (Dolphin-class) 柴電潛艦 650mm 魚雷管發射":"Dolphin-class diesel-electric submarine, fired from 650 mm torpedo tubes",
+"戰術空投核重力炸彈":"Tactical air-dropped nuclear gravity bomb","F-15I 雷霆式 / F-16I 風暴式戰鬥轟炸機掛載":"Carried by F-15I Ra’am / F-16I Sufa strike aircraft","(核模糊政策)":"(policy of ambiguity)","核模糊政策":"Policy of nuclear ambiguity",
+"~60（裂變材料或可造 ≥90 枚）":"~60 (fissile material may suffice for ≥90)","(平時分離儲存)":"(stored separately in peacetime)",
+"火星-15、火星-17、火星-18/19 洲際彈道飛彈":"Hwasong-15, Hwasong-17 and Hwasong-18/19 ICBMs","新浦級與金君玉英雄號潛艦測試北極星潛射飛彈（驗證中）":"Sinpo-class and Hero Kim Kun Ok submarines testing the Pukguksong SLBM (under validation)",
+"無現代化戰略轟炸機，不具備空基投射能力":"No modern strategic bombers; no air-delivery capability",
+"唯一退出《不擴散核武器條約》並持續試射的國家。近年公開標準化小型彈頭「火山-31」，朝向多彈種通用化與洲際打擊能力快速推進。":"The only state to have withdrawn from the Treaty on the Non-Proliferation of Nuclear Weapons and kept testing. It recently unveiled the standardized small warhead Hwasan-31 and is moving quickly toward common warheads across missile types and intercontinental strike capability.",
+"火星-18 / 火星-19 洲際飛彈":"Hwasong-18 / Hwasong-19 ICBM","不明（多為低當量裂變彈頭，少數為熱核）":"Unknown (mostly low-yield fission warheads, a few thermonuclear)",
+"固體燃料重型機動發射車（射程理論可覆蓋美國本土；尚無公開證據顯示已有可由洲際飛彈投射的實用彈頭）":"Solid-fuel heavy mobile launcher (range could theoretically cover the US mainland; no public evidence yet of a usable warhead deliverable by ICBM)",
+"火山-31 (Hwasan-31) 戰術核彈頭":"Hwasan-31 tactical nuclear warhead","標準化小型彈頭，通用於 KN-23 短程飛彈與巡弋飛彈":"Standardized small warhead usable on the KN-23 short-range missile and cruise missiles",
+"北極星潛射飛彈 / 海嘯核魚雷":"Pukguksong SLBM / Haeil (“Tsunami”) nuclear torpedo","近海至中程":"Coastal to medium range","金君玉英雄號戰術核攻擊潛艦與「海嘯」無人潛航器":"Hero Kim Kun Ok tactical nuclear attack submarine and the “Haeil” unmanned underwater vehicle",
+"洲際彈道飛彈":"ICBM","潛射彈道飛彈":"SLBM","空射巡弋飛彈":"Air-launched cruise missile","彈頭（三叉戟 II）":"Warhead (Trident II)","彈頭（義勇兵 III）":"Warhead (Minuteman III)","重力炸彈":"Gravity bomb","空射彈道飛彈":"Air-launched ballistic missile","彈頭（M51 飛彈）":"Warhead (M51 missile)","彈頭（空射巡弋飛彈）":"Warhead (air-launched cruise missile)","中遠程彈道飛彈":"Intermediate/long-range ballistic missile","中程彈道飛彈":"Medium-range ballistic missile","短程戰術飛彈":"Short-range tactical missile","空射／潛射巡弋飛彈":"Air/sub-launched cruise missile","潛射巡弋飛彈":"Sub-launched cruise missile","彈頭（短程飛彈用）":"Warhead (for short-range missiles)","潛射飛彈／核魚雷":"SLBM / nuclear torpedo",
+"該國目前無此類別核載具部署記錄":"No nuclear delivery systems of this category are recorded for this country",
+"現役":"Active","研發／測試中":"In development / testing","除役中":"Being retired",
+"NPT 承認核武國":"NPT-recognized nuclear state","未宣示 NFU":"No NFU pledge","宣示 NFU（附條件）":"NFU pledge (conditional)","宣示 NFU":"NFU pledge","未加入 NPT":"Not an NPT member","不排除率先使用":"First use not ruled out","無公開核試":"No public test","2003 年宣布退出 NPT":"Announced NPT withdrawal in 2003","首次核試：":"First test: ",
+"射程":"Range","數據較可靠":"More reliable","推估值":"Estimate","當量:":"Yield:","代入":"Load into","示意圖":"Illustration","（示意圖）":" (illustration)","廣島":"Hiroshima","約":"~",
+"歷史基準":"Historical references","各國彈頭":"Warheads by country","廣島「小男孩」(15 kt)":"Hiroshima “Little Boy” (15 kt)","長崎「胖子」(約 21 kt)":"Nagasaki “Fat Man” (~21 kt)","蘇聯「沙皇炸彈」實測 (50 Mt)":"Soviet “Tsar Bomba” test (50 Mt)",
+"巴基斯坦：納斯爾戰術核飛彈（推估 5 kt）":"Pakistan: Nasr tactical nuclear missile (est. 5 kt)","北韓：火山-31 戰術核彈頭（推估 15 kt）":"North Korea: Hwasan-31 tactical warhead (est. 15 kt)","印度：烈火-5 彈頭 (40 kt)":"India: Agni-V warhead (40 kt)","美國：B61-12 精準導引核炸彈 (50 kt)":"US: B61-12 precision-guided nuclear bomb (50 kt)","英國：Holbrook 潛射彈頭 (100 kt)":"UK: Holbrook SLBM warhead (100 kt)","法國：TNO 海洋潛射彈頭 (150 kt)":"France: TNO sea-launched warhead (150 kt)","北韓：火星-18 彈頭（推估 200 kt，實用性未證實）":"North Korea: Hwasong-18 warhead (est. 200 kt, practicality unconfirmed)","中國：DF-41 單枚彈頭（推估 250 kt）":"China: DF-41 single warhead (est. 250 kt)","美國：W88 潛射主力熱核彈頭 (475 kt)":"US: W88 main SLBM thermonuclear warhead (475 kt)","俄羅斯：RS-28 薩爾馬特單枚彈頭（設計值 750 kt，研發中）":"Russia: RS-28 Sarmat single warhead (design value 750 kt, in development)","美國：B83-1 戰略重力核炸彈 (1.2 Mt，除役中)":"US: B83-1 strategic gravity bomb (1.2 Mt, being retired)","俄羅斯：波塞冬核動力魚雷（宣稱 2.0 Mt，研發中）":"Russia: Poseidon nuclear-powered torpedo (claimed 2.0 Mt, in development)","中國：DF-5 系列（推估 4.0 Mt）":"China: DF-5 series (est. 4.0 Mt)",
+"1 psi 玻璃破碎":"1 psi glass breakage","窗戶破裂、輕微傷害，範圍最廣。":"Windows shatter and minor injuries; the widest range.","三度灼傷":"Third-degree burns","暴露皮膚嚴重燒傷，受能見度與天候影響大。":"Severe burns on exposed skin; strongly affected by visibility and weather.","5 psi 建築倒塌":"5 psi building collapse","多數住宅倒塌，常用作中度破壞基準。":"Most houses collapse; commonly used as the moderate-damage benchmark.","20 psi 重度摧毀":"20 psi heavy destruction","堅固混凝土建築嚴重損毀或倒塌。":"Sturdy concrete buildings are severely damaged or collapse.","火球":"Fireball","火球範圍內一切物質瞬間氣化。":"Everything inside the fireball is vaporized instantly.",
+"自訂當量":"Custom yield","自訂":"Custom ","平方根縮放：圓圈間距不代表等比例距離":"Square-root scaling: ring spacing is not proportional to distance","※ 過小的圓圈已放大以便辨識":"※ Very small circles were enlarged for visibility",
+"效應":"Effect","（半徑／面積）":" (radius / area)","廣島基準圈":"Hiroshima reference ring","爆高：地爆（地表爆炸）":"Burst height: surface burst","爆高：最佳空爆":"Burst height: optimal air burst","平方根縮放（同時看清小與大當量）":"Square-root scale (see small and large yields together)",
+"基準彈頭（青）":"Baseline warhead (cyan)","對比彈頭（橘）":"Comparison warhead (orange)"
+};
+
+  const keys = Object.keys(EN).sort((a, b) => b.length - a.length);
+  const re = new RegExp(keys.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
+  const CJK = /[\u3000-\u303f\u4e00-\u9fff\uff00-\uffef]/;
+  const PUN = [['（', ' ('], ['）', ')'], ['，', ', '], ['；', '; '], ['：', ': '], ['、', ', '], ['。', '. '], ['／', '/'], ['｜', ' | '], ['・', ' · '], ['＝', ' = '], ['＋', ' + '], ['「', '“'], ['」', '”'], ['～', '~'], ['　', ' ']];
+  const tr = (t) => { if (!CJK.test(t)) return t; let o = t.replace(re, m => EN[m]); for (const [a, b] of PUN) o = o.split(a).join(b); return o.replace(/ {2,}/g, ' ').replace(/\( /g, '(').replace(/ \)/g, ')'); };
+  const ATTR = ['aria-label', 'title', 'alt'];
+  function walk(n) {
+    if (n.nodeType === 3) { const v = n.nodeValue, o = tr(v); if (o !== v) n.nodeValue = o; return; }
+    if (n.nodeType !== 1 || n.tagName === 'SCRIPT' || n.tagName === 'STYLE') return;
+    ATTR.forEach(a => { const v = n.getAttribute(a); if (v) { const o = tr(v); if (o !== v) n.setAttribute(a, o); } });
+    n.childNodes.forEach(walk);
+  }
+  document.title = tr(document.title);
+  document.querySelectorAll('meta[content]').forEach(m => { m.content = tr(m.content); });
+  walk(document.body);
+  new MutationObserver(ms => ms.forEach(m => { if (m.type === 'characterData') walk(m.target); else m.addedNodes.forEach(walk); })).observe(document.body, { childList: true, subtree: true, characterData: true });
+})();
+</script>
+</body>
+</html>
